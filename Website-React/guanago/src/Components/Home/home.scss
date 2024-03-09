@@ -24,7 +24,6 @@
         position: absolute;
         height: 100%;
         width: 100%;
-        background: rgb(47, 106, 127, 0.6);
         top: 0;
         bottom: 0;
         z-index: 1;
@@ -160,6 +159,87 @@
                 font-weight: 600;
                 &:hover {
                     color: var(--PrimaryColor);
+                }
+            }
+        }
+    }
+}
+
+// Media Queries ========================================
+
+@media screen and (min-width: 500px) {
+    .home {
+        .homeContent {
+            .textDiv {
+                .smallText {
+                    font-size: 16px;
+                }
+
+                .homeTitle {
+                    position: relative;
+                    font-size: 2.3rem;
+                    width: max-content;
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: 5px;
+                        right: 0px;
+                        width: 145px;
+                        height: 5px;
+                        background: var(--SecondaryColor);
+                        z-index: -1;
+                    }
+                }
+            }
+
+            .cardDiv {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 660px) {
+    .home {
+        .homeContent {
+            .cardDiv {
+                padding: 2rem 1rem;
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 940px) {
+    .home {
+        height: 80vh;
+    }
+}
+
+@media screen and (min-width: 1240px) {
+    .home {
+        height: 85vh;
+        
+        .homeContent {
+            padding-left: 0;
+            padding-right: 0;
+
+            .cardDiv {
+                padding: 2rem 1rem;
+                grid-template-columns: repeat(3, 1fr);
+
+                .input {
+                    margin-bottom: 1rem;
+                }
+
+                .searchOptions {
+                    bottom: -1rem;
+                    padding: 8px 1rem;
+
+                    span {
+                        font-size: 17px;
+                    }
                 }
             }
         }
