@@ -3,6 +3,7 @@ import "./main.css";
 import img from "../../Assets/img1.jpg";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { HiOutlineClipboardCheck } from "react-icons/hi";
+import { Outlet, Link } from "react-router-dom";
 
 const Data = [
   {

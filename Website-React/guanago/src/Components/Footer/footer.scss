@@ -65,12 +65,12 @@
                     font-weight: 400;
                     color: var(--whiteColor);
                 }
-                
+
                 h2 {
                     color: var(--whiteColor);
                     font-size: 1.8rem;
                 }
-                
+
             }
 
             .inputDiv {
@@ -225,7 +225,7 @@
                     grid-template-columns: repeat(3, 1fr);
                     padding-bottom: 1rem;
                 }
-                
+
                 .footerDiv {
                     justify-content: space-between;
                     flex-direction: row;
@@ -268,6 +268,7 @@
 @media screen and (min-width: 840px) {
     .footer {
         padding: 5rem 0;
+
         .secContent {
             .footerCard {
                 flex-direction: row;
@@ -294,9 +295,11 @@
 
                 .footerSocials {
                     column-gap: .5rem;
+
                     .icon {
                         color: var(--textColor);
                         font-size: 25px;
+
                         &:hover {
                             color: var(--PrimaryColor);
                         }

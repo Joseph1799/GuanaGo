@@ -3,6 +3,7 @@ import "./navbar.css";
 import { LuPalmtree } from "react-icons/lu";
 import { GrClose } from "react-icons/gr";
 import { TbGridDots } from "react-icons/tb";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [active, setActive] = useState("navBar");
@@ -20,47 +21,41 @@ const Navbar = () => {
     <section className="navBarSection">
       <header className="header flex">
         <div className="logoDiv">
-          <a href="#" className="logo flex">
+          <Link to="/" className="logo flex">
             <h1>
               <LuPalmtree className="icon" /> GuanaGo.
             </h1>
-          </a>
+          </Link>
         </div>
 
         <div className={active}>
           <ul className="navLists flex">
             <li className="navItem">
-              <a href="#" className="navLink">
+              <Link to="/" className="navLink">
                 Inicio
-              </a>
+              </Link>
             </li>
 
             <li className="navItem">
-              <a href="#" className="navLink">
-                Viajar
-              </a>
-            </li>
-
-            <li className="navItem">
-              <a href="#" className="navLink">
+              <Link to="/eventos" className="navLink">
                 Eventos
-              </a>
+              </Link>
             </li>
 
             <li className="navItem">
-              <a href="#" className="navLink">
+              <Link to="/" className="navLink">
                 Ofertas
-              </a>
+              </Link>
             </li>
 
             <li className="navItem">
-              <a href="#" className="navLink">
+              <Link to="/" className="navLink">
                 Itinerarios
-              </a>
+              </Link>
             </li>
 
             <button className="btn">
-              <a href="#">RESERVAR AHORA</a>
+              <Link to="/login">Iniciar Sesión</Link>
             </button>
           </ul>
 

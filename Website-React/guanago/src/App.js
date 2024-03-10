@@ -1,18 +1,19 @@
 import React from "react";
 import "./app.css";
-import Navbar from "./Components/Navbar/Navbar";
-import Home from "./Components/Home/Home";
-import Main from "./Components/Main/Main";
-import Footer from "./Components/Footer/Footer";
+import Login from "./pages/Login.js";
+import Inicio from "./pages/Inicio.js";
+import Eventos from "./pages/Eventos.js";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
-    <>
-      <Navbar />
-      <Home />
-      <Main />
-      <Footer />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Inicio />} />
+        <Route path="/eventos" element={<Eventos />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
   );
 };
 
