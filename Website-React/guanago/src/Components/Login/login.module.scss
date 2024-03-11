@@ -86,8 +86,16 @@
                             }
                         }
 
-                        .smallText {
-                            padding-left: .3rem;
+                        small.errorText {
+                            color: red;
+                            font-size: 14px;
+                            font-weight: 300;
+                            display: block;
+                            padding-left: .2rem;
+                        }
+
+                        .registerText {
+                            padding-left: .2rem;
                             font-size: 14px;
                             color: var(--SecondaryColor);
                             font-weight: 500;
@@ -203,7 +211,7 @@
                             max-width: 30rem;
 
                             form {
-                                max-width: 35vh;
+                                max-width: 45vh;
                             }
 
                             .buttonDiv {

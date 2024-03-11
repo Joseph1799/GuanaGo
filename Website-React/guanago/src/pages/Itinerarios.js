@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../Components/Navbar/Navbar";
 
-const Eventos = () => {
+const Itinerarios = () => {
   return (
     <>
       <Navbar />
@@ -9,4 +9,4 @@ const Eventos = () => {
   );
 };
 
-export default Eventos;
+export default Itinerarios;

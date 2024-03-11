@@ -1,9 +1,10 @@
 package com.guanago.appTurismo.Entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 /**
- *Esta clase es la que representa a un usuario en el sistema.
+ * Esta clase es la que representa a un usuario en el sistema.
  */
 @Entity
 @Table(name = "usuario")
@@ -23,6 +24,21 @@ public class Usuario {
 
     @Column(nullable = false)
     private String apellido;
+
+    @Column(name = "reservas_id")
+    private Long reservasId;
+
+    @Column(name = "preferencias_id")
+    private Long preferenciasId;
+
+    @Column(name = "datos_personales_id")
+    private Long datosPersonalesId;
+
+    @Column(name = "itinerario_id")
+    private Long itinerarioId;
+
+    @Column(name = "informacion_pago_id")
+    private Long informacionPagoId;
 
     // Getters y setters
     public Long getId() {
@@ -65,4 +81,45 @@ public class Usuario {
         this.apellido = apellido;
     }
 
+    public Long getReservasId() {
+        return reservasId;
+    }
+
+    public void setReservasId(Long reservasId) {
+        this.reservasId = reservasId;
+    }
+
+    public Long getPreferenciasId() {
+        return preferenciasId;
+    }
+
+    public void setPreferenciasId(Long preferenciasId) {
+        this.preferenciasId = preferenciasId;
+    }
+
+    public Long getDatosPersonalesId() {
+        return datosPersonalesId;
+    }
+
+    public void setDatosPersonalesId(Long datosPersonalesId) {
+        this.datosPersonalesId = datosPersonalesId;
+    }
+
+    public Long getItinerarioId() {
+        return itinerarioId;
+    }
+
+    public void setItinerarioId(Long itinerarioId) {
+        this.itinerarioId = itinerarioId;
+    }
+
+    public Long getInformacionPagoId() {
+        return informacionPagoId;
+    }
+
+    public void setInformacionPagoId(Long informacionPagoId) {
+        this.informacionPagoId = informacionPagoId;
+    }
 }
+
+

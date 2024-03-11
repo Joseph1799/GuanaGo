@@ -89,13 +89,20 @@
   color: var(--whiteColor);
   opacity: 0.5;
 }
-.login .secContent .loginDiv .loginCard .loginIntro .inputDiv .smallText {
-  padding-left: 0.3rem;
+.login .secContent .loginDiv .loginCard .loginIntro .inputDiv small.errorText {
+  color: red;
+  font-size: 14px;
+  font-weight: 300;
+  display: block;
+  padding-left: 0.2rem;
+}
+.login .secContent .loginDiv .loginCard .loginIntro .inputDiv .registerText {
+  padding-left: 0.2rem;
   font-size: 14px;
   color: var(--SecondaryColor);
   font-weight: 500;
 }
-.login .secContent .loginDiv .loginCard .loginIntro .inputDiv .smallText:hover {
+.login .secContent .loginDiv .loginCard .loginIntro .inputDiv .registerText:hover {
   text-decoration: underline;
 }
 .login .secContent .loginDiv .loginCard .loginIntro .inputDiv .buttonDiv {
@@ -167,7 +174,7 @@
     max-width: 30rem;
   }
   .login .secContent .loginDiv .loginCard .loginIntro .inputDiv form {
-    max-width: 35vh;
+    max-width: 45vh;
   }
   .login .secContent .loginDiv .loginCard .loginIntro .inputDiv .buttonDiv .btn {
     margin-top: 1vh;

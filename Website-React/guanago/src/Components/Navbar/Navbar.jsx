@@ -4,9 +4,15 @@ import { LuPalmtree } from "react-icons/lu";
 import { GrClose } from "react-icons/gr";
 import { TbGridDots } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../AuthContext";
 
 const Navbar = () => {
+  const { isLoggedIn, logout } = useAuth();
   const [active, setActive] = useState("navBar");
+
+  const handleLogout = () => {
+    logout();
+  };
 
   //Funcion para mostrar el menu
   const showNav = () => {
@@ -43,20 +49,26 @@ const Navbar = () => {
             </li>
 
             <li className="navItem">
-              <Link to="/" className="navLink">
+              <Link to="/ofertas" className="navLink">
                 Ofertas
               </Link>
             </li>
 
             <li className="navItem">
-              <Link to="/" className="navLink">
+              <Link to="/itinerarios" className="navLink">
                 Itinerarios
               </Link>
             </li>
 
-            <button className="btn">
-              <Link to="/login">Iniciar Sesión</Link>
-            </button>
+            {isLoggedIn ? (
+              <button className="btn" onClick={handleLogout}>
+                Cerrar Sesión
+              </button>
+            ) : (
+              <button className="btn">
+                <Link to="/login">Iniciar Sesión</Link>
+              </button>
+            )}
           </ul>
 
           <div onClick={removeNav} className="closeNavbar">

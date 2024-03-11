@@ -1,22 +1,29 @@
 import React, { useEffect } from "react";
 import s from "./login.module.css";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../AuthContext";
+// Iconos de react-icons
 import { LuPalmtree } from "react-icons/lu";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { AiFillYoutube } from "react-icons/ai";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaTripadvisor } from "react-icons/fa";
-import { useState } from "react";
-
-import Aos from "aos";
-import "aos/dist/aos.css";
+import { handleLogin } from "./login-script";
 
 const Login = () => {
   useEffect(() => {
+    window.scrollTo(0, 0);
     Aos.init({ duration: 1000 });
   }, []);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -26,11 +33,10 @@ const Login = () => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  // Maneja el envío del formulario de inicio de sesión
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Lógica de autenticación
-    console.log("Username:", username);
-    console.log("Password:", password);
+    await handleLogin(username, password, setError, login, navigate);
   };
 
   return (
@@ -52,9 +58,7 @@ const Login = () => {
                     onChange={handleUsernameChange}
                     required
                   />
-
                   <label htmlFor="password">Contraseña:</label>
-
                   <input
                     type="password"
                     id="password"
@@ -63,10 +67,10 @@ const Login = () => {
                     onChange={handlePasswordChange}
                     required
                   />
-                  <a href="#" className={s.smallText}>
+                  {error && <small className={s.errorText}>{error}</small>}
+                  <a href="#" className={s.registerText}>
                     Registrarse
                   </a>
-
                   <div className={s.buttonDiv}>
                     <button type="submit" className={`${s.btn} flex`}>
                       Ingresar <LuPalmtree className={s.icon} />

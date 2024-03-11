@@ -65,6 +65,8 @@ li {
     border: none;
     outline: none;
     cursor: pointer;
+    color: var(--whiteColor);
+    font-weight: 500;
 }
 
 .btn a {

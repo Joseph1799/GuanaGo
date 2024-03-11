@@ -75,8 +75,6 @@
   }
   .header .navLists .btn {
     margin-top: 1rem;
-  }
-  .header .navLists .btn a {
     font-weight: 600;
     color: var(--whiteColor);
   }
@@ -99,7 +97,8 @@
 }
 
 @media screen and (min-width: 769px) {
-  .toggleNavbar, .closeNavbar {
+  .toggleNavbar,
+  .closeNavbar {
     display: none;
   }
   .header {
