@@ -31,9 +31,6 @@ public class Usuario {
     @Column(name = "preferencias_id")
     private Long preferenciasId;
 
-    @Column(name = "datos_personales_id")
-    private Long datosPersonalesId;
-
     @Column(name = "itinerario_id")
     private Long itinerarioId;
 
@@ -95,14 +92,6 @@ public class Usuario {
 
     public void setPreferenciasId(Long preferenciasId) {
         this.preferenciasId = preferenciasId;
-    }
-
-    public Long getDatosPersonalesId() {
-        return datosPersonalesId;
-    }
-
-    public void setDatosPersonalesId(Long datosPersonalesId) {
-        this.datosPersonalesId = datosPersonalesId;
     }
 
     public Long getItinerarioId() {
