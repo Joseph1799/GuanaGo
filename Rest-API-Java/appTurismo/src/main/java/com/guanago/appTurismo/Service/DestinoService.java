@@ -29,8 +29,8 @@ public class DestinoService {
         Optional<Destino> optionalDestino = destinoRepository.findById(id);
         if (optionalDestino.isPresent()) {
             Destino existingDestino = optionalDestino.get();
-            existingDestino.setImagenDest(destino.getImagenDest());
-            existingDestino.setDestTitle(destino.getDestTitle());
+            existingDestino.setImagen_dest(destino.getImagen_dest());
+            existingDestino.setDest_title(destino.getDest_title());
             existingDestino.setLugar(destino.getLugar());
             existingDestino.setClasificacion(destino.getClasificacion());
             existingDestino.setImpuestos(destino.getImpuestos());

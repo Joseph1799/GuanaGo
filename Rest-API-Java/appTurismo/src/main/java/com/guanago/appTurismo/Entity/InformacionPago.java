@@ -2,11 +2,9 @@ package com.guanago.appTurismo.Entity;
 
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
-
 @Entity
 @Table(name = "informacion_Pago")
-public class Informacion_Pago {
+public class InformacionPago {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

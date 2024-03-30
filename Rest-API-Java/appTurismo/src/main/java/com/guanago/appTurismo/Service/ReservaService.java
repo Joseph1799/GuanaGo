@@ -26,20 +26,6 @@ public class ReservaService {
         return reservaRepository.save(reserva);
     }
 
-    public Reserva actualizarReserva(Long id, Reserva reserva) {
-        Optional<Reserva> optionalReserva = reservaRepository.findById(id);
-        if (optionalReserva.isPresent()) {
-            Reserva existingReserva = optionalReserva.get();
-            existingReserva.setFecha_inicio(reserva.getFecha_inicio());
-            existingReserva.setFecha_fin(reserva.getFecha_fin());
-            existingReserva.setUsuarioId(reserva.getUsuarioId());
-            // Set other fields as needed
-            return reservaRepository.save(existingReserva);
-        } else {
-            return null;
-        }
-    }
-
     public void borrarReserva(Long id) {
         reservaRepository.deleteById(id);
     }

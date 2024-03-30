@@ -10,57 +10,59 @@ public class Destino {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
+
+    @Column
+    private String imagen_dest;
 
     @Column(nullable = false)
-    private String imagenDest;
-
-    @Column(nullable = false)
-    private String destTitle;
+    private String dest_title;
 
     @Column(nullable = false)
     private String lugar;
 
-    @Column(nullable = false)
+    @Column
     private String clasificacion;
 
-    @Column(nullable = false)
+    @Column
     private String impuestos;
 
-    @Column(nullable = false)
+    @Column
     private String descripcion;
-
-    @Column(nullable = false)
-    private String en_oferta;
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal precio;
 
-    @Column(nullable = false, precision = 10, scale = 2)
+    @Column(nullable = false)
+    private String en_oferta;
+
+    @Column(precision = 10, scale = 2)
     private BigDecimal precio_oferta;
 
-    public Long getId() {
+    // Getters y Setters
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getImagenDest() {
-        return imagenDest;
+    public String getImagen_dest() {
+        return imagen_dest;
     }
 
-    public void setImagenDest(String imagenDest) {
-        this.imagenDest = imagenDest;
+    public void setImagen_dest(String imagen_dest) {
+        this.imagen_dest = imagen_dest;
     }
 
-    public String getDestTitle() {
-        return destTitle;
+    public String getDest_title() {
+        return dest_title;
     }
 
-    public void setDestTitle(String destTitle) {
-        this.destTitle = destTitle;
+    public void setDest_title(String dest_title) {
+        this.dest_title = dest_title;
     }
 
     public String getLugar() {

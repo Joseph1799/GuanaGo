@@ -24,14 +24,16 @@ public class Reserva {
     @Column(nullable = false)
     private String estado;
 
-    @Column(name = "usuario_id")
-    private Long usuarioId;
-
-    @Column(name = "destino_id")
-    private Long destinoId;
-
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal precio;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "destino_id")
+    private Destino destino;
 
     public Long getId() {
         return id;
@@ -73,22 +75,6 @@ public class Reserva {
         this.estado = estado;
     }
 
-    public Long getUsuarioId() {
-        return usuarioId;
-    }
-
-    public void setUsuarioId(Long usuarioId) {
-        this.usuarioId = usuarioId;
-    }
-
-    public Long getDestinoId() {
-        return destinoId;
-    }
-
-    public void setDestinoId(Long destinoId) {
-        this.destinoId = destinoId;
-    }
-
     public BigDecimal getPrecio() {
         return precio;
     }
@@ -97,4 +83,19 @@ public class Reserva {
         this.precio = precio;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Destino getDestino() {
+        return destino;
+    }
+
+    public void setDestino(Destino destino) {
+        this.destino = destino;
+    }
 }

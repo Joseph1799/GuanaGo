@@ -2,6 +2,7 @@ package com.guanago.appTurismo.Entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import java.util.List;
 
 /**
  * Esta clase es la que representa a un usuario en el sistema.
@@ -25,17 +26,21 @@ public class Usuario {
     @Column(nullable = false)
     private String apellido;
 
-    @Column(name = "reservas_id")
-    private Long reservasId;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Reserva> reservas;
 
-    @Column(name = "preferencias_id")
-    private Long preferenciasId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "preferencias_id")
+    private Preferencias preferencias;
 
-    @Column(name = "itinerario_id")
-    private Long itinerarioId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "itinerario_id")
+    private Itinerario itinerario;
 
-    @Column(name = "informacion_pago_id")
-    private Long informacionPagoId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "informacion_pago_id")
+    private InformacionPago informacionPago;
+
 
     // Getters y setters
     public Long getId() {
@@ -78,36 +83,36 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public Long getReservasId() {
-        return reservasId;
+    public List<Reserva> getReservas() {
+        return reservas;
     }
 
-    public void setReservasId(Long reservasId) {
-        this.reservasId = reservasId;
+    public void setReservas(List<Reserva> reservas) {
+        this.reservas = reservas;
     }
 
-    public Long getPreferenciasId() {
-        return preferenciasId;
+    public Preferencias getPreferencias() {
+        return preferencias;
     }
 
-    public void setPreferenciasId(Long preferenciasId) {
-        this.preferenciasId = preferenciasId;
+    public void setPreferencias(Preferencias preferencias) {
+        this.preferencias = preferencias;
     }
 
-    public Long getItinerarioId() {
-        return itinerarioId;
+    public Itinerario getItinerario() {
+        return itinerario;
     }
 
-    public void setItinerarioId(Long itinerarioId) {
-        this.itinerarioId = itinerarioId;
+    public void setItinerario(Itinerario itinerario) {
+        this.itinerario = itinerario;
     }
 
-    public Long getInformacionPagoId() {
-        return informacionPagoId;
+    public InformacionPago getInformacionPago() {
+        return informacionPago;
     }
 
-    public void setInformacionPagoId(Long informacionPagoId) {
-        this.informacionPagoId = informacionPagoId;
+    public void setInformacionPago(InformacionPago informacionPago) {
+        this.informacionPago = informacionPago;
     }
 }
 

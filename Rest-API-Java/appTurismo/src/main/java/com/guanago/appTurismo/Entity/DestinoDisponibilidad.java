@@ -5,14 +5,14 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "destino_Disponibilidad")
-public class Destino_Disponibilidad {
+public class DestinoDisponibilidad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "destino_id")
-    private Long destinoId;
+    private int destinoId;
 
     @Column(nullable = false)
     private String fecha_inicio;
@@ -31,11 +31,11 @@ public class Destino_Disponibilidad {
         this.id = id;
     }
 
-    public Long getDestinoId() {
+    public int getDestinoId() {
         return destinoId;
     }
 
-    public void setDestinoId(Long destinoId) {
+    public void setDestinoId(int destinoId) {
         this.destinoId = destinoId;
     }
 
