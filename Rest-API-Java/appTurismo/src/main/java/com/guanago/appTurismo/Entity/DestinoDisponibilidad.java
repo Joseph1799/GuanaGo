@@ -2,6 +2,8 @@ package com.guanago.appTurismo.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 
 @Entity
 @Table(name = "destino_Disponibilidad")
@@ -11,14 +13,15 @@ public class DestinoDisponibilidad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "destino_id")
-    private int destinoId;
+    @ManyToOne
+    @JoinColumn(name = "destino_id", referencedColumnName = "id")
+    private Destino destino;
 
     @Column(nullable = false)
-    private String fecha_inicio;
+    private Date fecha_inicio;
 
     @Column(nullable = false)
-    private String fecha_fin;
+    private Date fecha_fin;
 
     @Column(nullable = false)
     private String disponible;
@@ -31,27 +34,27 @@ public class DestinoDisponibilidad {
         this.id = id;
     }
 
-    public int getDestinoId() {
-        return destinoId;
+    public Destino getDestino() {
+        return destino;
     }
 
-    public void setDestinoId(int destinoId) {
-        this.destinoId = destinoId;
+    public void setDestino(Destino destino) {
+        this.destino = destino;
     }
 
-    public String getFecha_inicio() {
+    public Date getFecha_inicio() {
         return fecha_inicio;
     }
 
-    public void setFecha_inicio(String fecha_inicio) {
+    public void setFecha_inicio(Date fecha_inicio) {
         this.fecha_inicio = fecha_inicio;
     }
 
-    public String getFecha_fin() {
+    public Date getFecha_fin() {
         return fecha_fin;
     }
 
-    public void setFecha_fin(String fecha_fin) {
+    public void setFecha_fin(Date fecha_fin) {
         this.fecha_fin = fecha_fin;
     }
 

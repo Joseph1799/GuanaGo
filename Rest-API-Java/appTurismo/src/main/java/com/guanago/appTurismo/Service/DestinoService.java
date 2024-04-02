@@ -4,48 +4,27 @@ import com.guanago.appTurismo.Entity.Destino;
 import com.guanago.appTurismo.Repository.DestinoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.List;
-import java.util.Optional;
+
+import java.util.*;
 
 @Service
 public class DestinoService {
     @Autowired
     private DestinoRepository destinoRepository;
 
-    public List<Destino> getAllDestinos() {
-        return destinoRepository.findAll();
-    }
-
-    public Destino getDestinoById(Long id) {
-        Optional<Destino> optionalDestino = destinoRepository.findById(id);
-        return optionalDestino.orElse(null);
-    }
-
-    public Destino crearDestino(Destino destino) {
-        return destinoRepository.save(destino);
-    }
-
-    public Destino actualizarDestino(Long id, Destino destino) {
-        Optional<Destino> optionalDestino = destinoRepository.findById(id);
-        if (optionalDestino.isPresent()) {
-            Destino existingDestino = optionalDestino.get();
-            existingDestino.setImagen_dest(destino.getImagen_dest());
-            existingDestino.setDest_title(destino.getDest_title());
-            existingDestino.setLugar(destino.getLugar());
-            existingDestino.setClasificacion(destino.getClasificacion());
-            existingDestino.setImpuestos(destino.getImpuestos());
-            existingDestino.setDescripcion(destino.getDescripcion());
-            existingDestino.setEn_oferta(destino.getEn_oferta());
-            existingDestino.setPrecio(destino.getPrecio());
-            existingDestino.setPrecio_oferta(destino.getPrecio_oferta());
-            // Set other fields as needed
-            return destinoRepository.save(existingDestino);
-        } else {
-            return null;
+    public List<Destino> obtenerDestinosEnOferta() {
+        List<Destino> destinos = destinoRepository.findAll();
+        List<Destino> destinosOferta = new ArrayList<>();
+        for (Destino destino : destinos) {
+            if (Objects.equals(destino.getEn_oferta(), "1")) {
+                destinosOferta.add(destino);
+            }
         }
+        return destinosOferta;
     }
 
-    public void borrarDestino(Long id) {
-        destinoRepository.deleteById(id);
+    public List<Destino> DestinosDisponiblesEnIntervalo(Date fechaInicio, Date fechaFin) {
+        return destinoRepository.DestinosDisponiblesEnIntervalo(fechaInicio, fechaFin);
     }
+
 }

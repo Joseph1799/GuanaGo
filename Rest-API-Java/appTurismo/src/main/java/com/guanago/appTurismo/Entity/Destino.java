@@ -25,7 +25,7 @@ public class Destino {
     private String clasificacion;
 
     @Column
-    private String impuestos;
+    private int impuestos;
 
     @Column
     private String descripcion;
@@ -33,11 +33,11 @@ public class Destino {
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal precio;
 
-    @Column(nullable = false)
+    @Column
     private String en_oferta;
 
-    @Column(precision = 10, scale = 2)
-    private BigDecimal precio_oferta;
+    @Column
+    private int precio_oferta;
 
     // Getters y Setters
 
@@ -81,11 +81,11 @@ public class Destino {
         this.clasificacion = clasificacion;
     }
 
-    public String getImpuestos() {
+    public int getImpuestos() {
         return impuestos;
     }
 
-    public void setImpuestos(String impuestos) {
+    public void setImpuestos(int impuestos) {
         this.impuestos = impuestos;
     }
 
@@ -113,11 +113,11 @@ public class Destino {
         this.precio = precio;
     }
 
-    public BigDecimal getPrecio_oferta() {
+    public int getPrecio_oferta() {
         return precio_oferta;
     }
 
-    public void setPrecio_oferta(BigDecimal precio_oferta) {
+    public void setPrecio_oferta(int precio_oferta) {
         this.precio_oferta = precio_oferta;
     }
 }

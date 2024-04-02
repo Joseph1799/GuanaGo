@@ -2,39 +2,38 @@ package com.guanago.appTurismo.Controller;
 
 import com.guanago.appTurismo.Entity.Destino;
 import com.guanago.appTurismo.Service.DestinoService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/destinos")
+@RequestMapping("/guanago/destinos")
 public class DestinoController {
     @Autowired
     private DestinoService destinoService;
 
-    @GetMapping("/")
-    public List<Destino> getAllDestinos() {
-        return destinoService.getAllDestinos();
+    public DestinoController(DestinoService destinoService) {
+        this.destinoService = destinoService;
     }
 
-    @GetMapping("/{id}")
-    public Destino getDestinoById(@PathVariable Long id) {
-        return destinoService.getDestinoById(id);
+    @GetMapping("/en-oferta")
+    public ResponseEntity<List<Destino>> obtenerDestinosEnOferta(HttpServletRequest request) {
+        List<Destino> destinosEnOferta = destinoService.obtenerDestinosEnOferta();
+        return ResponseEntity.ok(destinosEnOferta);
     }
 
-    @PostMapping("/")
-    public Destino crearDestino(@RequestBody Destino destino) {
-        return destinoService.crearDestino(destino);
-    }
+    @GetMapping("/disponibilidad")
+        public ResponseEntity<List<Destino>> obtenerDestinosDisponibles(
+            @RequestParam("inicio") @DateTimeFormat(pattern = "yyyy-MM-dd")Date fechaInicio,
+            @RequestParam("fin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaFin) {
+            List<Destino> destinosDisponibles = destinoService.DestinosDisponiblesEnIntervalo(fechaInicio, fechaFin);
+            return ResponseEntity.ok(destinosDisponibles);
+        }
 
-    @PutMapping("/{id}")
-    public Destino actualizarDestino(@PathVariable Long id, @RequestBody Destino destino) {
-        return destinoService.actualizarDestino(id, destino);
-    }
-
-    @DeleteMapping("/{id}")
-    public void borrarDestino(@PathVariable Long id) {
-        destinoService.borrarDestino(id);
-    }
 }
