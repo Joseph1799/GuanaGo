@@ -1,1 +1,218 @@
 
+
+# API de Destinos Turísticos de Guanago
+
+Esta API proporciona información sobre destinos turísticos en Guanacaste, Costa Rica.
+
+## Base URL
+
+```
+http://localhost:8080/guanago
+```
+
+## Endpoints Disponibles
+
+### 1. Registrar un Nuevo Usuario
+
+- **URL:** `/registrar`
+- **Método HTTP:** POST
+- **Descripción:** Registra un nuevo usuario en el sistema.
+- **Cuerpo de la Solicitud:** Debe contener los datos del usuario en formato JSON, incluyendo los siguientes campos:
+  - `email` (String, obligatorio): El correo electrónico del usuario.
+  - `contrasena` (String, obligatorio): La contraseña del usuario.
+  - `nombre` (String, obligatorio): El nombre del usuario.
+  - `apellido` (String, obligatorio): El apellido del usuario.
+- **Respuesta Exitosa:** Retorna un código de estado 200 junto con los datos del usuario registrado en formato JSON.
+- **Posibles Errores:**
+  - `400 Bad Request`: Si la solicitud está mal formada o falta algún campo obligatorio.
+  - `409 Conflict`: Si ya existe un usuario con el mismo correo electrónico.
+- **Ejemplo de Solicitud:**
+  ```http
+  POST http://localhost:8080/guanago/usuarios/registrar
+  Content-Type: application/json
+
+  {
+    "email": "ejemplo@gmail.com",
+    "contrasena": "contraseña123",
+    "nombre": "Juan",
+    "apellido": "Pérez"
+  }
+  ```
+- **Ejemplo de Respuesta Exitosa:**
+  ```json
+  {
+    "id": 1,
+    "email": "ejemplo@gmail.com",
+    "nombre": "Juan",
+    "apellido": "Pérez",
+    "reservasId": null,
+    "preferenciasId": null,
+    "datosPersonalesId": null,
+    "itinerarioId": null,
+    "informacionPagoId": null
+  }
+  ```
+
+### 2. Iniciar Sesión de Usuario
+
+- **URL:** `/login`
+- **Método HTTP:** POST
+- **Descripción:** Permite a un usuario iniciar sesión en el sistema.
+- **Cuerpo de la Solicitud:** Debe contener los datos de inicio de sesión en formato JSON, incluyendo los siguientes campos:
+  - `email` (String, obligatorio): El correo electrónico del usuario.
+  - `contrasena` (String, obligatorio): La contraseña del usuario.
+- **Respuesta Exitosa:** Retorna un código de estado 200 junto con un token de autenticación en formato JSON.
+- **Posibles Errores:**
+  - `401 Unauthorized`: Si las credenciales de inicio de sesión son incorrectas.
+- **Ejemplo de Solicitud:**
+  ```http
+  POST http://localhost:8080/guanago/usuarios/login
+  Content-Type: application/json
+
+  {
+    "email": "ejemplo@gmail.com",
+    "contrasena": "contraseña123"
+  }
+  ```
+- **Ejemplo de Respuesta Exitosa:**
+  ```json
+  {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+  }
+  ```
+
+### 3. Obtener Destinos en Oferta
+
+- **URL:** `/en-oferta`
+- **Método HTTP:** GET
+- **Descripción:** Obtiene la lista de destinos turísticos que están en oferta.
+- **Parámetros de la Solicitud:** No se requieren parámetros adicionales.
+- **Respuesta Exitosa:** Retorna un código de estado 200 junto con la lista de destinos en oferta en formato JSON.
+- **Ejemplo de Solicitud:**
+  ```http
+  GET http://localhost:8080/guanago/destinos/en-oferta
+  ```
+- **Ejemplo de Respuesta Exitosa:**
+  ``` json
+  [
+    {
+      "id": 1,
+      "imagen_dest": "imagen1.jpg",
+      "dest_title": "Destino en Oferta 1",
+      "lugar": "Ubicación del destino en oferta 1",
+      "clasificacion": "9.2",
+      "impuestos": 13,
+      "descripcion": "Descripción del destino en oferta 1",
+      "precio": 150000.0,
+      "en_oferta": "1",
+      "precio_oferta": 30
+    },
+    {
+      "id": 2,
+      "imagen_dest": "imagen2.jpg",
+      "dest_title": "Destino en Oferta 2",
+      "lugar": "Ubicación del destino en oferta 2",
+      "clasificacion": "8.3",
+      "impuestos": 13,
+      "descripcion": "Descripción del destino en oferta 2",
+      "precio": 110000.0,
+      "en_oferta": "1",
+      "precio_oferta": 20
+    }
+  ]
+  ```
+  
+### 4. Obtener Destinos Disponibles en un Intervalo de Fechas
+
+- **URL:** `/disponibilidad`
+- **Método HTTP:** GET
+- **Descripción:** Obtiene la lista de destinos turísticos disponibles en un intervalo de fechas especificado.
+- **Parámetros de la Solicitud:**
+  - `inicio` (String, obligatorio): Fecha de inicio del intervalo en formato "yyyy-MM-dd".
+  - `fin` (String, obligatorio): Fecha de fin del intervalo en formato "yyyy-MM-dd".
+- **Respuesta Exitosa:** Retorna un código de estado 200 junto con la lista de destinos disponibles en el intervalo de fechas en formato JSON.
+- **Posibles Errores:**
+  - `400 Bad Request`: Si los parámetros de fecha están mal formados.
+- **Ejemplo de Solicitud:**
+  ```http
+  GET http://localhost:8080/guanago/destinos/disponibilidad?inicio=2024-04-15&fin=2024-04-20
+  ```
+- **Ejemplo de Respuesta Exitosa:**
+  ```json
+  [
+    {
+      "id": 1,
+      "imagen_dest": "imagen1.jpg",
+      "dest_title": "Destino en Oferta 1",
+      "lugar": "Ubicación del destino en oferta 1",
+      "clasificacion": "9.2",
+      "impuestos": 13,
+      "descripcion": "Descripción del destino en oferta 1",
+      "precio": 150000.0,
+      "en_oferta": "1",
+      "precio_oferta": 30
+    },
+    {
+      "id": 2,
+      "imagen_dest": "imagen2.jpg",
+      "dest_title": "Destino en Oferta 2",
+      "lugar": "Ubicación del destino en oferta 2",
+      "clasificacion": "8.3",
+      "impuestos": 13,
+      "descripcion": "Descripción del destino en oferta 2",
+      "precio": 110000.0,
+      "en_oferta": "1",
+      "precio_oferta": 20
+    }
+  ]
+  ```
+  
+### 5. Obtener Destinos Reservados por un Usuario
+
+- **URL:** `/destinos-reservados`
+- **Método HTTP:** GET
+- **Descripción:** Obtiene la lista de destinos turísticos reservados por un usuario autenticado.
+- **Parámetros de la Solicitud:** No se requieren parámetros adicionales.
+- **Cabecera de Autorización:** Se debe incluir un token de autenticación en la cabecera de la solicitud.
+- **Respuesta Exitosa:** Retorna un código de estado 200 junto con la lista de destinos reservados por el usuario en formato JSON.
+- **Posibles Errores:**
+  - `401 Unauthorized`: Si el token de autenticación es inválido o ha expirado.
+- **Ejemplo de Solicitud:**
+  ```http
+  GET http://localhost:8080/guanago/usuarios/destinos-reservados
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+  ```
+- **Ejemplo de Respuesta Exitosa:**
+  ```json
+  [
+    {
+      "id": 1,
+      "imagen_dest": "imagen1.jpg",
+      "dest_title": "Destino en Oferta 1",
+      "lugar": "Ubicación del destino en oferta 1",
+      "clasificacion": "9.2",
+      "impuestos": 13,
+      "descripcion": "Descripción del destino en oferta 1",
+      "precio": 150000.0,
+      "en_oferta": "1",
+      "precio_oferta": 30
+    },
+    {
+      "id": 2,
+      "imagen_dest": "imagen2.jpg",
+      "dest_title": "Destino en Oferta 2",
+      "lugar": "Ubicación del destino en oferta 2",
+      "clasificacion": "8.3",
+      "impuestos": 13,
+      "descripcion": "Descripción del destino en oferta 2",
+      "precio": 110000.0,
+      "en_oferta": "1",
+      "precio_oferta": 20
+    }
+  ]
+  ```
+
+
+
+  
+
