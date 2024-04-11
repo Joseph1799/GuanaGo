@@ -12,6 +12,29 @@ public class Itinerario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    private String nombre_lugar;
+
+    @Column(nullable = false)
+    private String descripcion;
+
+    @Column(nullable = false)
+    private String fecha_inicio;
+
+    @Column(nullable = false)
+    private String fecha_fin;
+
+    @Column(nullable = false)
+    private String ciudad_destino;
+
+    @Column(nullable = false)
+    private String pais_destino;
+
+    @Column(nullable = false)
+    private String actividades;
+
+    // Getter y Setters
+
     public Long getId() {
         return id;
     }
@@ -75,26 +98,5 @@ public class Itinerario {
     public void setActividades(String actividades) {
         this.actividades = actividades;
     }
-
-    @Column(nullable = false)
-    private String nombre_lugar;
-
-    @Column(nullable = false)
-    private String descripcion;
-
-    @Column(nullable = false)
-    private String fecha_inicio;
-
-    @Column(nullable = false)
-    private String fecha_fin;
-
-    @Column(nullable = false)
-    private String ciudad_destino;
-
-    @Column(nullable = false)
-    private String pais_destino;
-
-    @Column(nullable = false)
-    private String actividades;
 
 }
