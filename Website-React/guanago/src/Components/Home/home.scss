@@ -97,6 +97,7 @@
                 padding: 0 1rem;
                 background: var(--inputColor);
                 border-radius: 3rem;
+                max-width: 40vh;
 
                 input {
                     background: none;
@@ -109,6 +110,34 @@
                     &::placeholder {
                         font-size: 13px;
                     }
+                }
+
+                .dateInput {
+                    margin-bottom: 20px;
+                }
+
+                .label {
+                    display: block;
+                    font-weight: bold;
+                    margin-bottom: 5px;
+                }
+
+                .input {
+                    display: flex;
+                }
+
+                .datePicker {
+                    margin-right: 10px;
+                }
+
+                .datePicker input {
+                    caret-color: transparent;
+                    cursor: pointer;
+                    text-align: center;
+                    padding: 8px;
+                    border: 1px solid #dfdfdf;
+                    border-radius: 50px;
+                    font-size: 14px;
                 }
 
                 .icon {

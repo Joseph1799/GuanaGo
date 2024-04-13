@@ -29,11 +29,11 @@ public class DestinoController {
     }
 
     @GetMapping("/disponibilidad")
-        public ResponseEntity<List<Destino>> obtenerDestinosDisponibles(
-            @RequestParam("inicio") @DateTimeFormat(pattern = "yyyy-MM-dd")Date fechaInicio,
-            @RequestParam("fin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaFin) {
-            List<Destino> destinosDisponibles = destinoService.DestinosDisponiblesEnIntervalo(fechaInicio, fechaFin);
-            return ResponseEntity.ok(destinosDisponibles);
-        }
+    public ResponseEntity<List<Destino>> obtenerDestinosDisponibles(
+        @RequestParam("inicio") @DateTimeFormat(pattern = "yyyy-MM-dd")Date fechaInicio,
+        @RequestParam("fin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaFin) {
+        List<Destino> destinosDisponibles = destinoService.DestinosDisponiblesEnIntervalo(fechaInicio, fechaFin);
+        return ResponseEntity.ok(destinosDisponibles);
+    }
 
 }

@@ -34,7 +34,7 @@ public class Destino {
     private BigDecimal precio;
 
     @Column
-    private String en_oferta;
+    private int en_oferta;
 
     @Column
     private int precio_oferta;
@@ -97,11 +97,11 @@ public class Destino {
         this.descripcion = descripcion;
     }
 
-    public String getEn_oferta() {
+    public int getEn_oferta() {
         return en_oferta;
     }
 
-    public void setEn_oferta(String en_oferta) {
+    public void setEn_oferta(int en_oferta) {
         this.en_oferta = en_oferta;
     }
 

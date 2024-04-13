@@ -1,5 +1,3 @@
-
-
 # API de Destinos Turísticos de Guanago
 
 Esta API proporciona información sobre destinos turísticos en Guanacaste, Costa Rica.
@@ -27,6 +25,7 @@ http://localhost:8080/guanago
   - `400 Bad Request`: Si la solicitud está mal formada o falta algún campo obligatorio.
   - `409 Conflict`: Si ya existe un usuario con el mismo correo electrónico.
 - **Ejemplo de Solicitud:**
+
   ```http
   POST http://localhost:8080/guanago/usuarios/registrar
   Content-Type: application/json
@@ -38,6 +37,7 @@ http://localhost:8080/guanago
     "apellido": "Pérez"
   }
   ```
+
 - **Ejemplo de Respuesta Exitosa:**
   ```json
   {
@@ -65,6 +65,7 @@ http://localhost:8080/guanago
 - **Posibles Errores:**
   - `401 Unauthorized`: Si las credenciales de inicio de sesión son incorrectas.
 - **Ejemplo de Solicitud:**
+
   ```http
   POST http://localhost:8080/guanago/usuarios/login
   Content-Type: application/json
@@ -74,6 +75,7 @@ http://localhost:8080/guanago
     "contrasena": "contraseña123"
   }
   ```
+
 - **Ejemplo de Respuesta Exitosa:**
   ```json
   {
@@ -93,7 +95,7 @@ http://localhost:8080/guanago
   GET http://localhost:8080/guanago/destinos/en-oferta
   ```
 - **Ejemplo de Respuesta Exitosa:**
-  ``` json
+  ```json
   [
     {
       "id": 1,
@@ -121,7 +123,7 @@ http://localhost:8080/guanago
     }
   ]
   ```
-  
+
 ### 4. Obtener Destinos Disponibles en un Intervalo de Fechas
 
 - **URL:** `/disponibilidad`
@@ -166,7 +168,7 @@ http://localhost:8080/guanago
     }
   ]
   ```
-  
+
 ### 5. Obtener Destinos Reservados por un Usuario
 
 - **URL:** `/destinos-reservados`
@@ -212,7 +214,43 @@ http://localhost:8080/guanago
   ]
   ```
 
+### 6. Registrar Reserva de un Destino para un Usuario
 
-
-  
-
+- **URL:** `/registrar-destino/{idDestino}/{fecha_inicio}/{fecha_fin}`
+- **Método HTTP:** POST
+- **Descripción:** Registra una reserva de destino para un usuario autenticado.
+- **Parámetros de la Solicitud:**
+  - `idDestino` (int, obligatorio): ID del destino a reservar.
+  - `fecha_inicio` (String, obligatorio): Fecha de inicio de la reserva en formato "yyyy-MM-dd".
+  - `fecha_fin` (String, obligatorio): Fecha de fin de la reserva en formato "yyyy-MM-dd".
+- **Cabecera de Autorización:** Se debe incluir un token de autenticación en la cabecera de la solicitud.
+- **Respuesta Exitosa:** Retorna un objeto JSON con los detalles de la reserva.
+- **Posibles Errores:**
+  - `400 Bad Request`: Si los parámetros de fecha están mal formados.
+  - `401 Unauthorized`: Si el token de autenticación es inválido o ha expirado.
+- **Ejemplo de Solicitud:**
+  ```http
+  POST http://localhost:8080/guanago/usuarios/registrar-destino/1/2024-05-01/2024-05-07
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+  ```
+- **Ejemplo de Respuesta Exitosa:**
+  ```json
+  {
+    "destino": {
+      "id": 1,
+      "imagen_dest": "imagen1.jpg",
+      "dest_title": "El Mangroove Papagayo, Autograph Collection",
+      "lugar": "Papagayo",
+      "clasificacion": "8.4",
+      "impuestos": 13,
+      "descripcion": "Descripción del destino reservado 1",
+      "precio": 200000.0,
+      "en_oferta": "0",
+      "precio_oferta": 0
+    },
+    "fecha_inicio": "2024-05-02",
+    "fecha_fin": "2024-05-05",
+    "precioAntesDelDescuento": 626000.0,
+    "precioTotal": 626000.0
+  }
+  ```

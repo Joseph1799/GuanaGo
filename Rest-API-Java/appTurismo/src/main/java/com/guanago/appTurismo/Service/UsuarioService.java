@@ -1,7 +1,9 @@
 package com.guanago.appTurismo.Service;
 
+import com.guanago.appTurismo.Controller.UsuarioController;
 import com.guanago.appTurismo.Entity.Reserva;
 import com.guanago.appTurismo.Entity.Usuario;
+import com.guanago.appTurismo.Repository.ReservaRepository;
 import com.guanago.appTurismo.Repository.UsuarioRepository;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -14,9 +16,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.guanago.appTurismo.Entity.Destino;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.text.SimpleDateFormat;
+
 
 /**
  * Esta clase contiene el servicio que gestiona la lógica de negocio relacionada con los usuarios.
@@ -37,9 +43,11 @@ public class UsuarioService {
     private long jwtExpirationMs;
 
     private BCryptPasswordEncoder passwordEncoder;
+    private final ReservaRepository reservaRepository;
 
-    public UsuarioService() {
+    public UsuarioService(ReservaRepository reservaRepository) {
         this.passwordEncoder = new BCryptPasswordEncoder();
+        this.reservaRepository = reservaRepository;
     }
 
     public String generateToken(String email) {
@@ -86,6 +94,39 @@ public class UsuarioService {
             throw new RuntimeException("Usuario no encontrado: " + email);
         }
         return usuario;
+    }
+
+    public UsuarioController.RegistroDestinoResponse RegistrarDestino(Destino destino, Usuario usuario, Date fecha_inicio, Date fecha_fin) {
+        BigDecimal precio = destino.getPrecio();
+        long diffEnMilisegundos = fecha_fin.getTime() - fecha_inicio.getTime();
+        long diffEnDias = TimeUnit.DAYS.convert(diffEnMilisegundos, TimeUnit.MILLISECONDS);
+        BigDecimal impuestos = BigDecimal.valueOf(destino.getImpuestos()).divide(BigDecimal.valueOf(100));
+        BigDecimal precioSinImpuestos = precio.multiply(BigDecimal.valueOf(diffEnDias));
+        BigDecimal precioTotal = precioSinImpuestos.add(precioSinImpuestos.multiply(impuestos));
+        BigDecimal precioAntesDeDescuento = precioTotal;
+        if (destino.getEn_oferta() == 1) {
+            BigDecimal descuento = BigDecimal.valueOf(destino.getPrecio_oferta()).divide(BigDecimal.valueOf(100));
+            descuento = precioTotal.multiply(descuento);
+            precioTotal = precioTotal.subtract(descuento);
+        }
+        Reserva reserva = new Reserva();
+        reserva.setDescripcion(destino.getDest_title());
+        reserva.setFecha_inicio(new Date());
+        reserva.setFecha_fin(fecha_fin);
+        reserva.setEstado("Activo");
+        reserva.setPrecio(precioTotal);
+        reserva.setUsuario(usuario);
+        reserva.setDestino(destino);
+
+        reservaRepository.save(reserva);
+
+        UsuarioController.RegistroDestinoResponse response = new UsuarioController.RegistroDestinoResponse();
+        response.setDestino(destino);
+        response.setFecha_inicio(new SimpleDateFormat("yyyy-MM-dd").format(fecha_inicio));
+        response.setFecha_fin(new SimpleDateFormat("yyyy-MM-dd").format(fecha_fin));
+        response.setPrecioAntesDelDescuento(precioAntesDeDescuento);
+        response.setPrecioTotal(precioTotal);
+        return response;
     }
 
     public List<Destino> obtenerDestinosReservados(Usuario usuario) {

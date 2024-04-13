@@ -3,6 +3,7 @@ package com.guanago.appTurismo.Entity;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 @Table(name = "reserva")
@@ -16,10 +17,10 @@ public class Reserva {
     private String descripcion;
 
     @Column(nullable = false)
-    private String fecha_inicio;
+    private Date fecha_inicio;
 
     @Column(nullable = false)
-    private String fecha_fin;
+    private Date fecha_fin;
 
     @Column(nullable = false)
     private String estado;
@@ -51,19 +52,19 @@ public class Reserva {
         this.descripcion = descripcion;
     }
 
-    public String getFecha_inicio() {
+    public Date getFecha_inicio() {
         return fecha_inicio;
     }
 
-    public void setFecha_inicio(String fecha_inicio) {
+    public void setFecha_inicio(Date fecha_inicio) {
         this.fecha_inicio = fecha_inicio;
     }
 
-    public String getFecha_fin() {
+    public Date getFecha_fin() {
         return fecha_fin;
     }
 
-    public void setFecha_fin(String fecha_fin) {
+    public void setFecha_fin(Date fecha_fin) {
         this.fecha_fin = fecha_fin;
     }
 

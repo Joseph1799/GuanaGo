@@ -27,4 +27,14 @@ public class DestinoService {
         return destinoRepository.DestinosDisponiblesEnIntervalo(fechaInicio, fechaFin);
     }
 
+    public Destino ObtenerDestinoPorId(int id) {
+        Optional<Destino> optionalDestino = destinoRepository.findById(Long.valueOf(id));
+        if (optionalDestino.isPresent()) {
+            return optionalDestino.get();
+        } else {
+            throw new RuntimeException("Destino no encontrado: " + id);
+        }
+    }
+
+
 }

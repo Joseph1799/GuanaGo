@@ -1,18 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./home.css";
 import video from "../../Assets/mainBeach.mp4";
 import { GrLocation } from "react-icons/gr";
-import { HiFilter } from "react-icons/hi";
+import { FaSearch } from "react-icons/fa";
 import { FiFacebook } from "react-icons/fi";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { FaTripadvisor } from "react-icons/fa";
 import { BsListTask } from "react-icons/bs";
 import { TbApps } from "react-icons/tb";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import Aos from "aos";
 import "aos/dist/aos.css";
 
 const Home = () => {
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [price, setPrice] = useState(150000);
+
+  const handlePriceChange = (e) => {
+    setPrice(parseInt(e.target.value)); // Actualiza el valor del rango y del <h3>
+  };
+
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
@@ -43,25 +53,54 @@ const Home = () => {
           </div>
 
           <div className="dateInput">
-            <label htmlFor="date">Elegir fechas:</label>
+            <label className="label" htmlFor="date">
+              Elegir fechas:
+            </label>
             <div className="input flex">
-              <input type="date" />
+              <div className="datePicker">
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                  selectsStart
+                  startDate={startDate}
+                  endDate={endDate}
+                  placeholderText="Fecha de inicio"
+                />
+              </div>
+              <div className="datePicker">
+                <DatePicker
+                  selected={endDate}
+                  onChange={(date) => setEndDate(date)}
+                  selectsEnd
+                  startDate={startDate}
+                  endDate={endDate}
+                  minDate={startDate}
+                  placeholderText="Fecha final"
+                />
+              </div>
             </div>
           </div>
 
           <div className="priceInput">
             <div className="label_total flex">
-              <label htmlFor="price">Precio maximo:</label>
-              <h3 className="total">₡2500000</h3>
+              <label htmlFor="price">Precio máximo:</label>
+              <h3 className="total">₡{price.toLocaleString()}</h3>
+              {/* Muestra el valor actual del rango */}
             </div>
             <div className="input flex">
-              <input type="range" max="2500000" min="10000" />
+              <input
+                type="range"
+                max="2500000"
+                min="10000"
+                value={price}
+                onChange={handlePriceChange}
+              />
             </div>
           </div>
 
           <div className="searchOptions flex">
-            <HiFilter className="icon" />
-            <span>Filtros</span>
+            <FaSearch className="icon" />
+            <span>Buscar</span>
           </div>
         </div>
 
