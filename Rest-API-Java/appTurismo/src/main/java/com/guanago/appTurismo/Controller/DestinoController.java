@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -33,6 +34,16 @@ public class DestinoController {
         @RequestParam("inicio") @DateTimeFormat(pattern = "yyyy-MM-dd")Date fechaInicio,
         @RequestParam("fin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaFin) {
         List<Destino> destinosDisponibles = destinoService.DestinosDisponiblesEnIntervalo(fechaInicio, fechaFin);
+        return ResponseEntity.ok(destinosDisponibles);
+    }
+
+    @GetMapping("/buscar-destino")
+    public ResponseEntity<List<Destino>> buscarDestinosFiltrados(
+            @RequestParam("lugar") String lugar,
+            @RequestParam("inicio") @DateTimeFormat(pattern = "yyyy-MM-dd")Date fechaInicio,
+            @RequestParam("fin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaFin,
+            @RequestParam("precio") int precio){
+        List<Destino> destinosDisponibles = destinoService.DestinosDisponiblesFiltrados(lugar, fechaInicio, fechaFin, BigDecimal.valueOf(precio));
         return ResponseEntity.ok(destinosDisponibles);
     }
 

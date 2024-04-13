@@ -254,3 +254,50 @@ http://localhost:8080/guanago
     "precioTotal": 626000.0
   }
   ```
+
+### 7. Buscar Destinos Filtrados
+
+- **URL:** `/buscar-destino`
+- **Método HTTP:** GET
+- **Descripción:** Busca destinos turísticos disponibles según los criterios de filtro especificados.
+- **Parámetros de la Solicitud:**
+  - `lugar` (String, obligatorio): Lugar o ubicación del destino.
+  - `inicio` (String, obligatorio): Fecha de inicio del intervalo en formato "yyyy-MM-dd".
+  - `fin` (String, obligatorio): Fecha de fin del intervalo en formato "yyyy-MM-dd".
+  - `precio` (int, obligatorio): Precio máximo por día del destino.
+- **Respuesta Exitosa:** Retorna un código de estado 200 junto con la lista de destinos filtrados en formato JSON.
+- **Posibles Errores:**
+  - `400 Bad Request`: Si los parámetros de fecha están mal formados.
+- **Ejemplo de Solicitud:**
+  ```http
+  GET http://localhost:8080/guanago/destinos/buscar-destino?lugar=tamarindo&inicio=2024-04-02&fin=2024-04-04&precio=300000
+  ```
+- **Ejemplo de Respuesta Exitosa:**
+  ```json
+  [
+    {
+      "id": 1,
+      "imagen_dest": "imagen1.jpg",
+      "dest_title": "Destino en Oferta 1",
+      "lugar": "Ubicación del destino en oferta 1",
+      "clasificacion": "9.2",
+      "impuestos": 13,
+      "descripcion": "tamarindo",
+      "precio": 300000.0,
+      "en_oferta": "1",
+      "precio_oferta": 30
+    },
+    {
+      "id": 2,
+      "imagen_dest": "imagen2.jpg",
+      "dest_title": "Destino en Oferta 2",
+      "lugar": "tamarindo",
+      "clasificacion": "8.3",
+      "impuestos": 13,
+      "descripcion": "Descripción del destino en oferta 2",
+      "precio": 220000.0,
+      "en_oferta": "1",
+      "precio_oferta": 20
+    }
+  ]
+  ```
