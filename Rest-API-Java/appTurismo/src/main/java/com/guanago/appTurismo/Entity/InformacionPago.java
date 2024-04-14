@@ -2,6 +2,8 @@ package com.guanago.appTurismo.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "informacion_Pago")
 public class InformacionPago {
@@ -12,13 +14,13 @@ public class InformacionPago {
     @Column(nullable = false)
     private String tipo_tarjeta;
     @Column(nullable = false)
-    private String numero_tarjeta;
+    private Long numero_tarjeta;
     @Column(nullable = false)
     private String nombre_tarjeta;
     @Column(nullable = false)
-    private String fecha_vencimiento;
+    private Date fecha_vencimiento;
     @Column(nullable = false)
-    private String codigo_seguridad;
+    private int codigo_seguridad;
     @Column(nullable = false)
     private String direccion_facturacion;
     @Column(nullable = false)
@@ -42,11 +44,11 @@ public class InformacionPago {
         this.tipo_tarjeta = tipo_tarjeta;
     }
 
-    public String getNumero_tarjeta() {
+    public Long getNumero_tarjeta() {
         return numero_tarjeta;
     }
 
-    public void setNumero_tarjeta(String numero_tarjeta) {
+    public void setNumero_tarjeta(Long numero_tarjeta) {
         this.numero_tarjeta = numero_tarjeta;
     }
 
@@ -58,19 +60,19 @@ public class InformacionPago {
         this.nombre_tarjeta = nombre_tarjeta;
     }
 
-    public String getFecha_vencimiento() {
+    public Date getFecha_vencimiento() {
         return fecha_vencimiento;
     }
 
-    public void setFecha_vencimiento(String fecha_vencimiento) {
+    public void setFecha_vencimiento(Date fecha_vencimiento) {
         this.fecha_vencimiento = fecha_vencimiento;
     }
 
-    public String getCodigo_seguridad() {
+    public int getCodigo_seguridad() {
         return codigo_seguridad;
     }
 
-    public void setCodigo_seguridad(String codigo_seguridad) {
+    public void setCodigo_seguridad(int codigo_seguridad) {
         this.codigo_seguridad = codigo_seguridad;
     }
 

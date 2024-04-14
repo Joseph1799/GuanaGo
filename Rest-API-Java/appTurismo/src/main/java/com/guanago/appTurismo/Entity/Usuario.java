@@ -34,10 +34,6 @@ public class Usuario {
     private Preferencias preferencias;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "itinerario_id")
-    private Itinerario itinerario;
-
-    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "informacion_pago_id")
     private InformacionPago informacionPago;
 
@@ -97,14 +93,6 @@ public class Usuario {
 
     public void setPreferencias(Preferencias preferencias) {
         this.preferencias = preferencias;
-    }
-
-    public Itinerario getItinerario() {
-        return itinerario;
-    }
-
-    public void setItinerario(Itinerario itinerario) {
-        this.itinerario = itinerario;
     }
 
     public InformacionPago getInformacionPago() {

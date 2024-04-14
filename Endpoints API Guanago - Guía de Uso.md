@@ -301,3 +301,123 @@ http://localhost:8080/guanago
     }
   ]
   ```
+
+### 8. Crear Itinerario
+
+- **URL:** `/crear-itinerario`
+- **Método HTTP:** POST
+- **Descripción:** Crea un nuevo itinerario para un usuario autenticado.
+- **Cuerpo de la Solicitud:** Debe contener los datos del itinerario en formato JSON, incluyendo los siguientes campos:
+  - `nombre_lugar` (String, obligatorio): Nombre del lugar del itinerario.
+  - `descripcion` (String, obligatorio): Descripción del itinerario.
+  - `fecha_inicio` (String, obligatorio): Fecha de inicio del itinerario en formato "yyyy-MM-dd".
+  - `fecha_fin` (String, obligatorio): Fecha de fin del itinerario en formato "yyyy-MM-dd".
+  - `ciudad_destino` (String, obligatorio): Ciudad de destino del itinerario.
+  - `pais_destino` (String, obligatorio): País de destino del itinerario.
+  - `actividades` (String, obligatorio): Actividades planificadas para el itinerario.
+- **Cabecera de Autorización:** Se debe incluir un token de autenticación en la cabecera de la solicitud.
+- **Respuesta Exitosa:** Retorna un objeto JSON con los detalles del itinerario creado.
+- **Posibles Errores:**
+  - `400 Bad Request`: Si la solicitud está mal formada o falta algún campo obligatorio.
+  - `401 Unauthorized`: Si el token de autenticación es inválido o ha expirado.
+- **Ejemplo de Solicitud:**
+
+  ```http
+  POST http://localhost:8080/guanago/destinos/crear-itinerario
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+  Content-Type: application/json
+
+  {
+      "nombre_lugar": "Lugar del Itinerario",
+      "descripcion": "Descripción del Itinerario",
+      "fecha_inicio": "2024-06-15",
+      "fecha_fin": "2024-06-26",
+      "ciudad_destino": "Guanacaste",
+      "pais_destino": "Costa Rica",
+      "actividades": "Actividades planificadas",
+      "destino": {
+          "id": 2
+      }
+  }
+  ```
+
+- **Ejemplo de Respuesta Exitosa:**
+  ```json
+  {
+    "id": 1,
+    "nombre_lugar": "Lugar del Itinerario",
+    "descripcion": "Descripción del Itinerario",
+    "fecha_inicio": "2024-06-01",
+    "fecha_fin": "2024-06-07",
+    "ciudad_destino": "Guanacaste",
+    "pais_destino": "Costa Rica",
+    "actividades": "Actividades planificadas"
+      "destino": {
+          "id": 2
+      }
+  }
+  ```
+
+### 9. Obtener Itinerarios del Usuario
+
+- **URL:** `/obtener-itinerarios`
+- **Método HTTP:** GET
+- **Descripción:** Obtiene todos los itinerarios asociados a un usuario autenticado.
+- **Cabecera de Autorización:** Se debe incluir un token de autenticación en la cabecera de la solicitud.
+- **Respuesta Exitosa:** Retorna un objeto JSON con la lista de itinerarios del usuario.
+- **Posibles Errores:**
+  - `401 Unauthorized`: Si el token de autenticación es inválido o ha expirado.
+- **Ejemplo de Solicitud:**
+  ```http
+  GET http://localhost:8080/guanago/destinos/obtener-itinerarios
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+  ```
+- **Ejemplo de Respuesta Exitosa:**
+  ```json
+  [
+    {
+      "id": 1,
+      "nombre_lugar": "Lugar del Itinerario 1",
+      "descripcion": "Descripción del Itinerario 1",
+      "fecha_inicio": "2024-06-01",
+      "fecha_fin": "2024-06-07",
+      "ciudad_destino": "Ciudad de Destino 1",
+      "pais_destino": "País de Destino 1",
+      "actividades": "Actividades planificadas 1"
+      "destino": {
+          "id": 1,
+          "imagen_dest": "imagen1.jpg",
+          "dest_title": "Destino en Oferta 1",
+          "lugar": "Ubicación del destino en oferta 1",
+          "clasificacion": "9.2",
+          "impuestos": 13,
+          "descripcion": "tamarindo",
+          "precio": 300000.0,
+          "en_oferta": "1",
+          "precio_oferta": 30
+      }
+    },
+    {
+      "id": 2,
+      "nombre_lugar": "Lugar del Itinerario 2",
+      "descripcion": "Descripción del Itinerario 2",
+      "fecha_inicio": "2024-06-10",
+      "fecha_fin": "2024-06-15",
+      "ciudad_destino": "Ciudad de Destino 2",
+      "pais_destino": "País de Destino 2",
+      "actividades": "Actividades planificadas 2"
+      "destino": {
+          "id": 1,
+          "imagen_dest": "imagen1.jpg",
+          "dest_title": "Destino en Oferta 1",
+          "lugar": "Ubicación del destino en oferta 1",
+          "clasificacion": "9.2",
+          "impuestos": 13,
+          "descripcion": "tamarindo",
+          "precio": 300000.0,
+          "en_oferta": "1",
+          "precio_oferta": 30
+      }
+    }
+  ]
+  ```
