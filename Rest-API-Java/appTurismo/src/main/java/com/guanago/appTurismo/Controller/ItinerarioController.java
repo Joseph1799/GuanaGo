@@ -17,9 +17,10 @@ import java.util.List;
 @RequestMapping("guanago/itinerarios")
 public class ItinerarioController {
 
-    private final UsuarioService usuarioService;
     @Autowired
     private ItinerarioService itinerarioService;
+    @Autowired
+    private  UsuarioService usuarioService;
 
     public ItinerarioController(ItinerarioService itinerarioService, UsuarioService usuarioService, UsuarioService usuarioService1) {
         this.itinerarioService = itinerarioService;
@@ -41,5 +42,10 @@ public class ItinerarioController {
         String email = Jwts.parser().setSigningKey(usuarioService.getJwtSecret()).parseClaimsJws(token).getBody().getSubject();
         Usuario usuario = usuarioService.obtenerUsuarioPorEmail(email);
         return ResponseEntity.ok(itinerarioService.ItinerariosDeUsuario(usuario));
+    }
+
+    @PutMapping("/editar-itinerario")
+    public Itinerario EditarItinerario(@RequestBody Itinerario itinerario) {
+        return itinerarioService.EditarItinerario(itinerario);
     }
 }

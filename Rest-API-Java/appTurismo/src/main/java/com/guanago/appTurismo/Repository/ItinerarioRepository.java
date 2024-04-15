@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface ItinerarioRepository extends JpaRepository<Itinerario, Long> {
 
-
+    Itinerario findById(long itinerario_id);
 
 }

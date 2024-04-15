@@ -2,6 +2,9 @@ package com.guanago.appTurismo.Entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalTime;
+import java.util.Date;
+
 @Entity
 @Table(name = "evento")
 public class Evento {
@@ -17,7 +20,7 @@ public class Evento {
     private String descripcion;
 
     @Column(nullable = false)
-    private String fecha;
+    private Date fecha;
 
     @Column(nullable = false)
     private String hora;
@@ -52,11 +55,11 @@ public class Evento {
         this.descripcion = descripcion;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 

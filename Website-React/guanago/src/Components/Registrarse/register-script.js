@@ -1,0 +1,2 @@
+/* Crear funciones para el registro de usuarios y usar el
+fetch necesario para este */

@@ -352,7 +352,7 @@ http://localhost:8080/guanago
     "ciudad_destino": "Guanacaste",
     "pais_destino": "Costa Rica",
     "actividades": "Actividades planificadas"
-      "destino": {
+    "destino": {
           "id": 2
       }
   }
@@ -420,4 +420,46 @@ http://localhost:8080/guanago
       }
     }
   ]
+  ```
+
+### 10. Editar Itinerario
+
+- **URL:** `/editar-itinerario`
+- **Método HTTP:** PUT
+- **Descripción:** Edita un itinerario existente.
+- **Cuerpo de la Solicitud:** Debe contener los datos actualizados del itinerario en formato JSON.
+- **Respuesta Exitosa:** Retorna el itinerario editado en formato JSON.
+- **Posibles Errores:**
+  - `404 Not Found`: Si el itinerario no existe.
+- **Ejemplo de Solicitud:**
+
+  ```http
+  PUT http://localhost:8080/guanago/destinos/editar-itinerario
+  Content-Type: application/json
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+  {
+    "id": 1,
+    "nombre_lugar": "Nuevo Nombre del Itinerario",
+    "descripcion": "Nueva Descripción del Itinerario",
+    "fecha_inicio": "2024-07-01",
+    "fecha_fin": "2024-07-10",
+    "ciudad_destino": "Nueva Ciudad de Destino",
+    "pais_destino": "Nuevo País de Destino",
+    "actividades": "Nuevas Actividades planificadas"
+  }
+  ```
+
+- **Ejemplo de Respuesta Exitosa:**
+  ```json
+  {
+    "id": 1,
+    "nombre_lugar": "Nuevo Nombre del Itinerario",
+    "descripcion": "Nueva Descripción del Itinerario",
+    "fecha_inicio": "2024-07-01",
+    "fecha_fin": "2024-07-10",
+    "ciudad_destino": "Nueva Ciudad de Destino",
+    "pais_destino": "Nuevo País de Destino",
+    "actividades": "Nuevas Actividades planificadas"
+  }
   ```

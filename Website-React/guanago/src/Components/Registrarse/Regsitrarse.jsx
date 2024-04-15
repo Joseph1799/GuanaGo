@@ -1,44 +1,23 @@
 import React, { useEffect } from "react";
-import s from "./login.module.css";
+import s from "./registrarse.module.css";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../AuthContext";
+import {} from "./register-script.js"; // Importar script de validacion (*Por hacer*)
 // Iconos de react-icons
 import { LuPalmtree } from "react-icons/lu";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { AiFillYoutube } from "react-icons/ai";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaTripadvisor } from "react-icons/fa";
-import { handleLogin } from "./login-script";
-import { Link } from "react-router-dom";
 
-const Login = () => {
+const Registrarse = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     Aos.init({ duration: 1000 });
   }, []);
-
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const { login } = useAuth();
-  const navigate = useNavigate();
-
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  // Maneja el envío del formulario de inicio de sesión
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    await handleLogin(username, password, setError, login, navigate);
-  };
 
   return (
     <section className={s.login}>
@@ -48,15 +27,15 @@ const Login = () => {
             <div className={`${s.loginIntro} flex`}>
               <div className={`${s.inputDiv} flex`}>
                 {/* LOGIN FORM START*/}
-                <h2>Ingresa a tu Cuenta</h2>
-                <form onSubmit={handleSubmit}>
+                <h2>Registrarse</h2>
+                <form onSubmit="">
                   <label htmlFor="username">Correo Electronico:</label>
                   <input
                     type="text"
                     id="username"
                     name="username"
-                    value={username}
-                    onChange={handleUsernameChange}
+                    value=""
+                    onChange=""
                     required
                   />
                   <label htmlFor="password">Contraseña:</label>
@@ -64,14 +43,10 @@ const Login = () => {
                     type="password"
                     id="password"
                     name="password"
-                    value={password}
-                    onChange={handlePasswordChange}
+                    value=""
+                    onChange=""
                     required
                   />
-                  {error && <small className={s.errorText}>{error}</small>}
-                  <Link to="/registrarse" className={s.registerText}>
-                    ¿No tienes una cuenta? Regístrate
-                  </Link>
                   <div className={s.buttonDiv}>
                     <button type="submit" className={`${s.btn} flex`}>
                       Ingresar <LuPalmtree className={s.icon} />
@@ -105,4 +80,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Registrarse;
