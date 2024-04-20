@@ -1,7 +1,9 @@
 package com.guanago.appTurismo.Service;
 
 import com.guanago.appTurismo.Entity.Destino;
+import com.guanago.appTurismo.Entity.DestinoResena;
 import com.guanago.appTurismo.Repository.DestinoRepository;
+import com.guanago.appTurismo.Repository.DestinoResenaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ import java.util.concurrent.TimeUnit;
 public class DestinoService {
     @Autowired
     private DestinoRepository destinoRepository;
+    @Autowired
+    private DestinoResenaService destinoResenaService;
 
     public List<Destino> obtenerDestinosEnOferta() {
         List<Destino> destinos = destinoRepository.findAll();
@@ -33,6 +37,7 @@ public class DestinoService {
         long diffEnMilisegundos = fechaFin.getTime() - fechaInicio.getTime();
         long diffEnDias = TimeUnit.DAYS.convert(diffEnMilisegundos, TimeUnit.MILLISECONDS);
         List<Destino> destinos = destinoRepository.DestinosDisponiblesFiltrados(lugar, fechaInicio, fechaFin, precio, diffEnDias);
+        List<DestinoResena> resenas = new ArrayList<>();
         for (Destino destino : destinos) {
             BigDecimal precioMultiplicado = destino.getPrecio().multiply(BigDecimal.valueOf(diffEnDias));
             destino.setPrecio(precioMultiplicado);

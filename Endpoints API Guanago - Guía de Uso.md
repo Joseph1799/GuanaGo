@@ -463,3 +463,64 @@ http://localhost:8080/guanago
     "actividades": "Nuevas Actividades planificadas"
   }
   ```
+
+### 11. Crear una Reseña para un Destino
+
+- **URL:** `/crear-resena`
+- **Método HTTP:** POST
+- **Descripción:** Crea una nueva reseña para un destino específico.
+- **Cuerpo de la Solicitud:** Debe contener los datos de la reseña en formato JSON, incluyendo los siguientes campos:
+  - `resena` (String, obligatorio): La reseña del destino.
+- **Parámetros de la Solicitud:**
+  - `destino_id` (Integer, obligatorio): El ID del destino al que se asociará la reseña.
+- **Respuesta Exitosa:** Retorna un código de estado 200 junto con un mensaje indicando que la reseña se ha agregado exitosamente.
+- **Posibles Errores:**
+  - `400 Bad Request`: Si la solicitud está mal formada o falta algún campo obligatorio.
+- **Ejemplo de Solicitud:**
+
+  ```http
+  POST http://localhost:8080/guanago/destinos/crear-resena?destino_id=1
+  Content-Type: application/json
+
+  {
+    "resena": "Este destino es increíble, ¡me encantó!"
+  }
+  ```
+
+- **Ejemplo de Respuesta Exitosa:**
+
+  ```json
+  {
+    "mensaje": "Reseña Agregada Exitosamente"
+  }
+  ```
+
+  ### 12. Obtener Reseñas de un Destino
+
+- **URL:** `/resenas-destino`
+- **Método HTTP:** GET
+- **Descripción:** Obtiene todas las reseñas asociadas a un destino específico.
+- **Parámetros de la Solicitud:**
+  - `destinoId` (Integer, obligatorio): El ID del destino del cual se quieren obtener las reseñas.
+- **Respuesta Exitosa:** Retorna un código de estado 200 junto con una lista de objetos JSON que representan las reseñas del destino especificado.
+- **Posibles Errores:**
+  - `400 Bad Request`: Si la solicitud está mal formada o falta el parámetro `destinoId`.
+- **Ejemplo de Solicitud:**
+
+  ```http
+  GET http://localhost:8080/guanago/destinos/resenas-destino?destinoId=1
+  ```
+
+- **Ejemplo de Respuesta Exitosa:**
+  ```json
+  [
+    {
+      "id": 1,
+      "resena": "Este destino es increíble, ¡me encantó!"
+    },
+    {
+      "id": 2,
+      "resena": "Una experiencia maravillosa, definitivamente volveré."
+    }
+  ]
+  ```

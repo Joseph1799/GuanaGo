@@ -1,6 +1,8 @@
 package com.guanago.appTurismo.Controller;
 
 import com.guanago.appTurismo.Entity.Destino;
+import com.guanago.appTurismo.Entity.DestinoResena;
+import com.guanago.appTurismo.Service.DestinoResenaService;
 import com.guanago.appTurismo.Service.DestinoService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ import java.util.List;
 public class DestinoController {
     @Autowired
     private DestinoService destinoService;
+
+    @Autowired
+    private DestinoResenaService destinoResenaService;
 
     public DestinoController(DestinoService destinoService) {
         this.destinoService = destinoService;
@@ -45,6 +50,19 @@ public class DestinoController {
             @RequestParam("precio") int precio){
         List<Destino> destinosDisponibles = destinoService.DestinosDisponiblesFiltrados(lugar, fechaInicio, fechaFin, BigDecimal.valueOf(precio));
         return ResponseEntity.ok(destinosDisponibles);
+    }
+
+    @GetMapping("/resenas-destino")
+    public ResponseEntity<List<DestinoResena>> ObtenerResenasDeDestino(@RequestParam("destinoId") int destinoId) {
+        return ResponseEntity.ok(destinoResenaService.obtenerResenasDeDestino(destinoId));
+    }
+
+    @PostMapping("/crear-resena")
+    public ResponseEntity<String> crearResena(@RequestBody DestinoResena destinoResena,
+                                     @RequestParam("destino_id") int destinoId){
+        destinoResena.setDestino(destinoService.ObtenerDestinoPorId(destinoId));
+        destinoResenaService.crearResena(destinoResena);
+        return ResponseEntity.ok("Reseña Agregada Exitosamente");
     }
 
 }
