@@ -1,0 +1,446 @@
+:root {
+    --PrimaryColor: hsl(199, 100%, 33%);
+    --SecondaryColor: hsl(187, 85%, 43%);
+    --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(201, 33%, 16%);
+    --textColor: hsl(240, 4%, 36%);
+    --whiteColorDeam: hsl(0, 0%, 93%);
+    --greyText: rgb(190, 190, 190);
+    --inputColor: rgb(239, 239, 239);
+    --bodyColor: ■rgb(240, 240, 246);
+    --cardBG: rgb(225, 225, 235);
+}
+
+.destino {
+    width: 100%;
+    position: relative;
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+
+
+    .videoDiv {
+        margin-top: 143px;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+
+        video {
+            height: 100%;
+            object-fit: cover;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            background: rgba(10, 84, 107, 0.307);
+            top: 0;
+            bottom: 0;
+            left: 0;
+            mix-blend-mode: multiply;
+        }
+    }
+
+    .secContent {
+        width: 100%;
+        height: max-content;
+        padding: 2rem initial;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: auto;
+        row-gap: 2rem;
+        z-index: 100;
+
+        .contactDiv {
+            justify-content: space-between;
+            flex-direction: column;
+            gap: 1rem;
+
+            .text {
+                small {
+                    font-size: 13px;
+                    font-weight: 400;
+                    color: var(--whiteColor);
+                }
+
+                h2 {
+                    color: var(--whiteColor);
+                    font-size: 1.8rem;
+                }
+
+            }
+
+            .inputDiv {
+                width: 100%;
+                gap: 1rem;
+                flex-direction: column;
+
+                input {
+                    width: 100%;
+                    padding: .5rem 6rem;
+                    border-radius: 3rem;
+                    border: 1px solid var(--whiteColor);
+                    outline: none;
+                    background: transparent;
+                    color: var(--whiteColor);
+
+                    &::placeholder {
+                        color: var(--whiteColor);
+                        opacity: .5;
+                    }
+                }
+
+                .btn {
+                    width: 100%;
+                    justify-content: center;
+                    color: var(--whiteColor);
+                    font-weight: 500;
+                    gap: .5rem;
+
+                    .icon {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+
+        .destinoCard {
+            margin-top: 60px;
+            position: relative;
+            padding: 1rem 1rem 4rem;
+            gap: 2rem;
+            border-radius: 1rem;
+            background: var(--whiteColor);
+            width: 100%;
+            justify-content: center;
+            flex-direction: column;
+            align-items: flex-start;
+            overflow: hidden;
+
+            .destinoIntro {
+                flex-basis: 70%;
+                justify-content: center;
+                align-items: flex-start;
+                flex-direction: column;
+                row-gap: .5rem;
+            }
+
+            .destinoHeader {
+                width: 75%;
+                display: flex;
+                align-self: center;
+
+                .destinoReservar {
+                    width: 100%;
+                    justify-content: space-between;
+
+                    .destinoTitle {
+                        width: 75%;
+                        display: flex;
+                        align-self: center;
+
+                        h3 {
+                            font-size: 1.5rem;
+                            color: var(--blackColor);
+                            position: relative;
+                            display: inline-block;
+                        }
+
+                        h3::after {
+                            content: '';
+                            position: absolute;
+                            bottom: -2px;
+                            left: 0;
+                            width: 100%;
+                            height: 4px;
+                            background-color: var(--SecondaryColor);
+                        }
+                    }
+
+                    .reservar {
+                        font-size: 2rem;
+                        color: var(--blackColor);
+                    }
+                }
+            }
+
+            .destinoLocation {
+                width: 75%;
+                display: flex;
+                align-self: center;
+            }
+
+            .lugarHeader {
+                width: 100%;
+                justify-content: space-between;
+                padding-left: 1rem;
+
+                .calificacion {
+                    color: var(--textColor);
+                    max-width: 100px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    span {
+                        font-size: 16px;
+                        color: var(--textColor);
+                    }
+
+                    small {
+                        margin-left: 5px;
+                        text-align: center;
+                        background: var(--gradientColor);
+                        border-radius: 1rem;
+                        color: var(--whiteColor);
+                        padding: 1px 10px;
+                        font-size: 14px;
+                    }
+                }
+
+                .precio {
+                    font-size: 2rem;
+                    color: var(--blackColor);
+                }
+            }
+
+            .destinoImage {
+                width: 75%;
+                align-self: center;
+                border-radius: 5px;
+                overflow: hidden;
+            }
+
+            .destinoImage .Image {
+                width: 100%;
+                border-radius: 5px;
+                transition: transform 0.3s ease;
+            }
+
+            .destinoImage .Image:hover {
+                transform: scale(1.1);
+            }
+
+
+            .logoDiv {
+                .logo {
+                    color: var(--blackColor);
+                    font-weight: 600;
+
+                    .icon {
+                        font-size: 25px;
+                        color: var(--PrimaryColor);
+                        margin-right: 10px;
+                    }
+                }
+            }
+
+            .destinoParagraph {
+                font-size: 13px;
+                color: var(--textColor);
+                width: 75%;
+                display: flex;
+                align-self: center;
+            }
+
+            .destinoSocials {
+                column-gap: .5rem;
+
+                .icon {
+                    color: var(--blackColor);
+                    font-size: 20px;
+
+                    &:hover {
+                        color: var(--PrimaryColor);
+                    }
+                }
+            }
+
+            .destinoLinks {
+                flex-basis: 30%;
+                border: 2px solid var(--SecondaryColor);
+                border-radius: 1rem;
+                width: 100%;
+                gap: 1rem;
+                grid-template-columns: repeat(2, 1fr);
+                justify-content: space-between;
+                padding: 1rem 1rem 0;
+                margin-top: 4rem;
+
+                .linkGroup {
+                    .resenasDiv {
+                        max-height: 600px;
+                        overflow-y: auto;
+                        padding: .5rem;
+                        margin-bottom: 20px;
+                        box-shadow: inset 0px 5px 10px -5px rgba(0, 0, 0, 0.8),
+                            inset 2px -5px 15px -5px rgba(0, 0, 0, 0.8);
+                    }
+
+
+                    .groupTitle {
+                        display: block;
+                        font-weight: 600;
+                        color: var(--blackColor);
+                        margin-bottom: .5rem;
+                    }
+
+                    .icon {
+                        font-size: 30px;
+                        color: var(--greyText);
+                    }
+
+                    .destinoList {
+                        cursor: default;
+                        font-size: 15px;
+                        color: var(--textColor);
+                        transition: .3s ease-in-out;
+                        background-color: var(--cardBG);
+                        margin: 10px 0;
+                        padding: 10px;
+                        border-radius: .5rem;
+
+                        .icon {
+                            font-size: 15px;
+                            color: var(--greyText);
+                        }
+
+                        &:hover {
+                            color: var(--PrimaryColor);
+                            transform: translateX(7px);
+
+                            .icon {
+                                color: var(--SecondaryColor);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .destinoDiv {
+                flex-direction: column;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: var(--SecondaryColor);
+                padding: .5rem 2rem;
+
+                small {
+                    font-size: 10px;
+                    color: var(--whiteColor);
+                }
+            }
+
+        }
+    }
+}
+
+// MEDIA QUERIES ============================================
+
+@media screen and (min-width: 500px) {
+    .destino {
+        .secContent {
+            .destinoCard {
+                .destinoLinks {
+                    grid-template-columns: repeat(3, 1fr);
+                    padding-bottom: 1rem;
+                }
+
+                .destinoDiv {
+                    justify-content: space-between;
+                    flex-direction: row;
+
+                    small {
+                        font-size: 14px;
+                        color: var(--whiteColor);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 660px) {
+    .destino {
+        .secContent {
+            .contactDiv {
+                flex-direction: row;
+                justify-content: space-between;
+
+                .inputDiv {
+                    width: max-content;
+                    flex-direction: row;
+                    justify-content: flex-start;
+
+                    input {
+                        width: 60%;
+                    }
+
+                    .btn {
+                        width: max-content;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 840px) {
+    .destino {
+        padding: 5rem 0;
+
+        .secContent {
+            .destinoCard {
+                flex-direction: row;
+
+                .destinoIntro {
+                    grid-template-columns: repeat(3, 1fr);
+                    padding-bottom: 1rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .destino {
+        .secContent {
+            .destinoCard {
+                padding: 3rem 1rem;
+
+                .destinoIntro {
+                    font-size: 15px;
+                    color: var(--textColor);
+                }
+
+                .destinoSocials {
+                    column-gap: .5rem;
+
+                    .icon {
+                        color: var(--textColor);
+                        font-size: 25px;
+
+                        &:hover {
+                            color: var(--PrimaryColor);
+                        }
+                    }
+                }
+            }
+
+            .destinoLinks {
+                .linkGroup {
+                    .destinoList {
+                        font-size: 16px;
+                        padding: 5px 0;
+                    }
+                }
+            }
+        }
+    }
+}

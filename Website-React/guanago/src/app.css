@@ -78,6 +78,27 @@ li {
     background: var(--SecondaryColor);
 }
 
+.btnSecondary {
+    padding: .3rem .4rem;
+    border-radius: 3rem;
+    border: 2px solid var(--SecondaryColor);
+    cursor: pointer;
+    color: var(--blackColor);
+    font-weight: 600;
+    transition: .3s;
+}
+
+.btnSecondary a {
+    color: var(--whiteColor);
+    font-weight: 500;
+}
+
+.btnSecondary:hover {
+    border-color: var(--PrimaryColor);
+    transform: scale(1.03);
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3);
+}
+
 img,
 video {
     width: 100%;
@@ -85,11 +106,27 @@ video {
 }
 
 input {
-    font-size: 100%;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0rem;
+    width: 100%;
+    font-size: 15px;
+    border-radius: 6px;
+    border: 2px solid var(--textColor);
 }
 
 body {
     background: var(--bodyColor);
+}
+
+textarea {
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0rem;
+    width: 100%;
+    font-size: 15px;
+    border-radius: 6px;
+    border: 2px solid var(--textColor);
+    resize: none;
+    height: 150px;
 }
 
 /*MEDIA QUERIES ===================================*/

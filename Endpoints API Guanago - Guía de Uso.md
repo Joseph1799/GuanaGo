@@ -495,7 +495,7 @@ http://localhost:8080/guanago
   }
   ```
 
-  ### 12. Obtener Reseñas de un Destino
+### 12. Obtener Reseñas de un Destino
 
 - **URL:** `/resenas-destino`
 - **Método HTTP:** GET
@@ -523,4 +523,97 @@ http://localhost:8080/guanago
       "resena": "Una experiencia maravillosa, definitivamente volveré."
     }
   ]
+  ```
+
+### 13. Obtener Destino por ID
+
+- **URL:** `/destinoById`
+- **Método HTTP:** GET
+- **Descripción:** Obtiene un destino específico por su ID.
+- **Parámetros de la Solicitud:**
+  - `destinoId` (Integer, obligatorio): El ID del destino que se desea obtener.
+- **Respuesta Exitosa:** Retorna un objeto JSON que representa el destino solicitado.
+- **Posibles Errores:**
+  - `404 Not Found`: Si no se encuentra ningún destino con el ID proporcionado.
+- **Ejemplo de Solicitud:**
+
+  ```http
+  GET http://localhost:8080/guanago/destinos/destinoById?destinoId=1
+  ```
+
+- **Ejemplo de Respuesta Exitosa:**
+  ```json
+      "id": 2,
+      "imagen_dest": "imagen2.jpg",
+      "dest_title": "Destino en Oferta 2",
+      "lugar": "Ubicación del destino en oferta 2",
+      "clasificacion": "8.3",
+      "impuestos": 13,
+      "descripcion": "Descripción del destino en oferta 2",
+      "precio": 110000.0,
+      "en_oferta": "1",
+      "precio_oferta": 20
+    }
+  ```
+
+### 14. Editar Usuario
+
+- **URL:** `/editar-usuario`
+- **Método HTTP:** PUT
+- **Descripción:** Permite al usuario editar su información en el sistema.
+- **Encabezado de la Solicitud:** Debe contener el token de autenticación del usuario en el encabezado `Authorization`.
+- **Cuerpo de la Solicitud:** Debe contener los datos actualizados del usuario en formato JSON, incluyendo los siguientes campos:
+  - `nombre` (String, opcional): El nuevo nombre del usuario.
+  - `apellido` (String, opcional): El nuevo apellido del usuario.
+- **Respuesta Exitosa:** Retorna un código de estado 200 junto con un mensaje indicando que la información del usuario ha sido actualizada correctamente.
+- **Posibles Errores:**
+  - `401 Unauthorized`: Si el token de autenticación es inválido o no está presente en el encabezado.
+- **Ejemplo de Solicitud:**
+
+  ```http
+  PUT http://localhost:8080/guanago/usuarios/editar-usuario
+  Content-Type: application/json
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+  {
+    "nombre": "NuevoNombre",
+    "apellido": "NuevoApellido"
+  }
+  ```
+
+- **Ejemplo de Respuesta Exitosa:**
+  ```json
+  {
+    "mensaje": "Usuario actualizado correctamente"
+  }
+  ```
+
+### 15. Editar Contraseña del Usuario
+
+- **URL:** `/editar-contrasena`
+- **Método HTTP:** PUT
+- **Descripción:** Permite al usuario editar su contraseña en el sistema.
+- **Encabezado de la Solicitud:** Debe contener el token de autenticación del usuario en el encabezado `Authorization`.
+- **Cuerpo de la Solicitud:** Debe contener la nueva contraseña del usuario en formato JSON, incluyendo el siguiente campo:
+  - `contrasena` (String, obligatorio): La nueva contraseña del usuario.
+- **Respuesta Exitosa:** Retorna un código de estado 200 junto con un mensaje indicando que la contraseña del usuario ha sido actualizada correctamente.
+- **Posibles Errores:**
+  - `401 Unauthorized`: Si el token de autenticación es inválido o no está presente en el encabezado.
+- **Ejemplo de Solicitud:**
+
+  ```http
+  PUT http://localhost:8080/guanago/usuarios/editar-contrasena
+  Content-Type: application/json
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+  {
+    "contrasena": "NuevaContraseña123"
+  }
+  ```
+
+- **Ejemplo de Respuesta Exitosa:**
+  ```json
+  {
+    "mensaje": "Contraseña actualizada correctamente"
+  }
   ```

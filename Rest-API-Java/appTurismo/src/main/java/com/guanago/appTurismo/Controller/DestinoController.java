@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -63,6 +62,11 @@ public class DestinoController {
         destinoResena.setDestino(destinoService.ObtenerDestinoPorId(destinoId));
         destinoResenaService.crearResena(destinoResena);
         return ResponseEntity.ok("Reseña Agregada Exitosamente");
+    }
+
+    @GetMapping("/destinoById")
+    public Destino ObtenerDestinoPorId(@RequestParam("destinoId") int destinoId) {
+        return destinoService.ObtenerDestinoPorId(destinoId);
     }
 
 }

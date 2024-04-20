@@ -79,6 +79,27 @@ public class UsuarioController {
         return response;
     }
 
+    @PutMapping("/editar-usuario")
+    public ResponseEntity<String> EditarUsuario ( HttpServletRequest request,
+                                                  @RequestBody Usuario usuarioActualizado){
+        String token = request.getHeader("Authorization").replace("Bearer ", "");
+        String email = Jwts.parser().setSigningKey(usuarioService.getJwtSecret()).parseClaimsJws(token).getBody().getSubject();
+        Usuario usuario = usuarioService.obtenerUsuarioPorEmail(email);
+        usuarioService.EditarUsuario(usuarioActualizado, usuario);
+        return ResponseEntity.ok("Usuario actualizada correctamente");
+
+    }
+
+    @PutMapping("/editar-contrasena")
+    public ResponseEntity<String> EditarContraseña( HttpServletRequest request,
+                                                    @RequestBody Usuario usuarioActualizado){
+        String token = request.getHeader("Authorization").replace("Bearer ", "");
+        String email = Jwts.parser().setSigningKey(usuarioService.getJwtSecret()).parseClaimsJws(token).getBody().getSubject();
+        Usuario usuario = usuarioService.obtenerUsuarioPorEmail(email);
+        usuarioService.EditarContrasena(usuarioActualizado, usuario);
+        return ResponseEntity.ok("Contraseña actualizada correctamente");
+    }
+
     public static class RegistroDestinoResponse{
         private Destino destino;
         private String fecha_inicio;
@@ -117,7 +138,6 @@ public class UsuarioController {
             this.precioTotal = precioTotal;
         }
     }
-
 
 
 }

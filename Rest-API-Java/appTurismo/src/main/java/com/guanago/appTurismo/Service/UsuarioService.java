@@ -138,7 +138,19 @@ public class UsuarioService {
         return destinosReservados;
     }
 
+    public void EditarUsuario(Usuario usuarioActualizado, Usuario usuario) {
+        usuario.setNombre(usuarioActualizado.getNombre());
+        usuario.setApellido(usuarioActualizado.getApellido());
+        usuarioRepository.save(usuario);
+    }
 
+    public void EditarContrasena(Usuario usuarioActualizado, Usuario usuario) {
+        if(!usuario.getContrasena().isBlank()){
+            // Hashear la contraseña antes de guardarla
+            usuario.setContrasena(BCrypt.hashpw(usuarioActualizado.getContrasena(), BCrypt.gensalt()));
+        }
+        usuarioRepository.save(usuario);
+    }
 
 }
 

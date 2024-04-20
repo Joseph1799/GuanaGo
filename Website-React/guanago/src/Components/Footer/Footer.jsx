@@ -1,6 +1,6 @@
 import React from "react";
 import "./footer.css";
-import video from "../../Assets/secondBeach.mp4";
+import video from "../../Assets/Footer.mp4";
 import { FiSend } from "react-icons/fi";
 import { LuPalmtree } from "react-icons/lu";
 import { AiOutlineTwitter } from "react-icons/ai";
