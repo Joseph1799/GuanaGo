@@ -152,5 +152,13 @@ public class UsuarioService {
         usuarioRepository.save(usuario);
     }
 
+    public Usuario ObtenerUsuarioFormateado(Usuario usuario) {
+        usuario.setReservas(null);
+        usuario.setPreferencias(null);
+        usuario.setInformacionPago(null);
+        usuario.setContrasena(null);
+        return usuario;
+    }
+
 }
 

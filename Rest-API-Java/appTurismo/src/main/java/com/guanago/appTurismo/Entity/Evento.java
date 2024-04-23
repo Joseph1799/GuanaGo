@@ -31,6 +31,9 @@ public class Evento {
     @Column(nullable = false)
     private String imagen;
 
+    @Column
+    private String coords;
+
     public Long getId() {
         return id;
     }
@@ -85,6 +88,14 @@ public class Evento {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    public String getCoords() {
+        return coords;
+    }
+
+    public void setCoords(String coords) {
+        this.coords = coords;
     }
 }
 

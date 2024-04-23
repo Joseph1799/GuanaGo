@@ -39,6 +39,9 @@ public class Destino {
     @Column
     private int precio_oferta;
 
+    @Column
+    private String coords;
+
     // Getters y Setters
 
     public int getId() {
@@ -119,5 +122,13 @@ public class Destino {
 
     public void setPrecio_oferta(int precio_oferta) {
         this.precio_oferta = precio_oferta;
+    }
+
+    public String getCoords() {
+        return coords;
+    }
+
+    public void setCoords(String coords) {
+        this.coords = coords;
     }
 }

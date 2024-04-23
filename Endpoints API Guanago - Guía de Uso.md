@@ -617,3 +617,33 @@ http://localhost:8080/guanago
     "mensaje": "Contraseña actualizada correctamente"
   }
   ```
+
+### 16. Obtener Datos del Usuario
+
+- **URL:** `/datos-usuario`
+- **Método HTTP:** GET
+- **Descripción:** Obtiene los datos del usuario actualmente autenticado en el sistema.
+- **Encabezado de la Solicitud:** Debe contener el token de autenticación del usuario en el encabezado `Authorization`.
+- **Respuesta Exitosa:** Retorna un objeto JSON que representa los datos del usuario, sin incluir la contraseña ni información sensible.
+- **Posibles Errores:**
+  - `401 Unauthorized`: Si el token de autenticación es inválido o no está presente en el encabezado.
+- **Ejemplo de Solicitud:**
+
+  ```http
+  GET http://localhost:8080/datos-usuario
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+  ```
+
+- **Ejemplo de Respuesta Exitosa:**
+  ```json
+  {
+    "id": 1,
+    "email": "usuario@example.com",
+    "contrasena": null,
+    "nombre": "Nombre",
+    "apellido": "Apellido",
+    "reservas": null,
+    "preferencias": null,
+    "informacionPago": null
+  }
+  ```

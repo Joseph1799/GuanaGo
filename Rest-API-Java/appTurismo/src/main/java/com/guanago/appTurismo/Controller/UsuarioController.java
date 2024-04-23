@@ -100,6 +100,14 @@ public class UsuarioController {
         return ResponseEntity.ok("Contraseña actualizada correctamente");
     }
 
+    @GetMapping("/datos-usuario")
+    public Usuario ObtenerDatosDeUsuario(HttpServletRequest request) {
+        String token = request.getHeader("Authorization").replace("Bearer ", "");
+        String email = Jwts.parser().setSigningKey(usuarioService.getJwtSecret()).parseClaimsJws(token).getBody().getSubject();
+        Usuario usuario = usuarioService.obtenerUsuarioPorEmail(email);
+        return usuarioService.ObtenerUsuarioFormateado(usuario);
+    }
+
     public static class RegistroDestinoResponse{
         private Destino destino;
         private String fecha_inicio;
