@@ -25,6 +25,9 @@ const Booking = () => {
     apellido: '',
     email: '',
   });
+
+  var startDate = localStorage.getItem('startDate');
+  var endDate = localStorage.getItem('endDate');
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -105,8 +108,7 @@ const Booking = () => {
 
     const token = localStorage.getItem('token');
 
-    const startDate = localStorage.getItem('startDate');
-    const endDate = localStorage.getItem('endDate');
+   
 
     const url = `http://localhost:8080/guanago/usuarios/registrar-destino/${destinationData.id}/${startDate}/${endDate}`;
     console.log(url)
@@ -194,23 +196,19 @@ const Booking = () => {
 
 
           {/* Tarjeta de detalles de la reserva */}
-          <div className="card booking-details-card">
+        <div className="card booking-details-card">
             <h3>Los datos de tu reserva</h3>
             <div className="reservation-dates">
               <div>
                 <strong>Entrada:</strong>
-                <p>mar, 7 may 2024</p>
-            
+                <p>{startDate ? new Date(startDate).toLocaleDateString() : 'Fecha no especificada'}</p>
               </div>
               <div>
                 <strong>Salida:</strong>
-                <p>mié, 8 may 2024</p>
-               
+                <p>{endDate ? new Date(endDate).toLocaleDateString() : 'Fecha no especificada'}</p>
               </div>
             </div>
-          
-            
-          </div>
+        </div>
         </div>
 
         <div className="right-column">

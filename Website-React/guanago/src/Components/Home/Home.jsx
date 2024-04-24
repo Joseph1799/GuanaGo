@@ -51,8 +51,8 @@ const Home = () => {
 
   const handleSearch = async () => {
     if (startDate && endDate) {
-      const formattedStartDate = startDate.toISOString().split('T')[0];
-      const formattedEndDate = endDate.toISOString().split('T')[0];
+      var formattedStartDate = startDate.toISOString().split('T')[0];
+      var formattedEndDate = endDate.toISOString().split('T')[0];
 
       localStorage.setItem('startDate', formattedStartDate);
       localStorage.setItem('endDate', formattedEndDate);
