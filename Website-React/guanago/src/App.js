@@ -30,7 +30,7 @@ const App = () => {
           <Route path="/misreservas" element={<Misreservas />} />
           <Route path="/destinos" element={<Destinos />} /> 
           <Route path="/destino/:id" element={<Destino />} />
-          <Route path="/reservar" element={<Reservar />} />
+          <Route path="/reservar/:id" element={<Reservar />} />
         </Routes>
       </AuthProvider>
     </Router>

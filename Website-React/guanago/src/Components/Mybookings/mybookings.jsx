@@ -79,12 +79,6 @@ const Mybookings = () => {
                       <h5>Precio: ₡{precio}</h5>
                     </div>
                   </div>
-
-                 
-
-                  <button className="btn flex">
-                    Ver reserva 
-                  </button>
                 </div>
               </div>
             );

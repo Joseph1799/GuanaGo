@@ -10,6 +10,7 @@ import { FaTripadvisor } from "react-icons/fa";
 import { BsListTask } from "react-icons/bs";
 import { TbApps } from "react-icons/tb";
 import DatePicker from "react-datepicker";
+import GoogleTranslateWidget from "../Translation/GoogleTranslateWidget";
 
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -33,6 +34,16 @@ const Home = () => {
     setPrice(parseInt(e.target.value)); // Actualiza el valor del rango y del <h3>
   };
 
+  useEffect(() => {
+    // Verifica si el widget ya está definido para evitar re-cargas
+    if (!window.google || !window.google.translate || !window.google.translate.TranslateElement) {
+      var googleTranslateScript = document.createElement('script');
+      googleTranslateScript.type = 'text/javascript';
+      googleTranslateScript.async = true;
+      googleTranslateScript.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      document.body.appendChild(googleTranslateScript);
+    }
+  }, []);
 
   useEffect(() => {
     Aos.init({ duration: 2000 });
@@ -42,6 +53,9 @@ const Home = () => {
     if (startDate && endDate) {
       const formattedStartDate = startDate.toISOString().split('T')[0];
       const formattedEndDate = endDate.toISOString().split('T')[0];
+
+      localStorage.setItem('startDate', formattedStartDate);
+      localStorage.setItem('endDate', formattedEndDate);
 
       try {
         const response = await fetch(`http://localhost:8080/guanago/destinos/buscar-destino?lugar=${location}&inicio=${formattedStartDate}&fin=${formattedEndDate}&precio=${price}00`);
@@ -60,14 +74,18 @@ const Home = () => {
   };
 
   return (
+    
     <section className="home">
       <div className="overlay"> </div>
       <video src={video} muted autoPlay loop type="video/mp4"></video>
-
+      <GoogleTranslateWidget />
+     <div id="google_translate_element"></div>
       <div className="homeContent container">
         <div className="textDiv">
           <span data-aos="fade-up" className="smallText">
             Nuestros Paquetes
+           
+
           </span>
 
           <h1 data-aos="fade-up" className="homeTitle">

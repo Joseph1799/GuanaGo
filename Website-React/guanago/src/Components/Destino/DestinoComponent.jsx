@@ -76,7 +76,7 @@ const DestinoComponent = () => {
 
                 </div>
                 <div className="reservar">
-                  <button className="btn"><Link to="/reservar">Reservar</Link></button>
+                  <button className="btn"><Link to={`/reservar/${id}`}>Reservar</Link></button>
                 </div>
               </div>
             </div>

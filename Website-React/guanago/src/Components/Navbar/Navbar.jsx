@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext,useEffect, useState } from "react";
 import "./navbar.css";
 import { LuPalmtree } from "react-icons/lu";
 import { GrClose } from "react-icons/gr";
@@ -62,7 +62,26 @@ const Navbar = () => {
 
   const [showNotifications, setShowNotifications] = useState(false);
   const [notifications] = useState(notificationsData); // Assume notifications are pre-loaded
-  
+
+  const [offers, setOffers] = useState([]);
+
+  useEffect(() => {
+    const fetchOffers = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/guanago/destinos/en-oferta');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setOffers(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchOffers();
+  }, []);
+
 
   const toggleNotifications = () => {
     setShowNotifications(!showNotifications);
@@ -83,7 +102,7 @@ const Navbar = () => {
     setActive("navBar");
   };
   const toggleNavbar = () => setActive(!active);
-  
+
   return (
     <section className="navBarSection">
       <header className="header flex">
@@ -131,24 +150,22 @@ const Navbar = () => {
 
                 <div className="iconButton" onClick={toggleNotifications}>
                   <IoIosNotificationsOutline />
-                  {notifications.length > 0 && (
-                    <span className="notification-counter">{notifications.length}</span>
+                  {offers.length > 0 && (
+                    <span className="notification-counter">{offers.length}</span>
                   )}
                 </div>
                 {showNotifications && (
-                <div className="notifications-dropdown">
-                  {notifications.map((notification) => (
-                    
-                    <div key={notification.id} className="notification-item">
-                       <Link to="/ofertas" className="iconButton">
-                      <h4>{notification.dest_title}</h4>
-                      <p>{notification.descripcion}</p>
-                      </Link>
-                    </div>
-                   
-                  ))}
-                </div>
-              )}
+                  <div className="notifications-dropdown">
+                    {offers.map((offer) => (
+                      <div key={offer.id} className="notification-item">
+                        <Link to="/ofertas" className="iconButton">
+                          <h4>{offer.dest_title}</h4>
+                          <p>{offer.descripcion}</p>
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                )}
 
                 <Link to="/profile" className="iconButton">
                   <FaUserCircle />
@@ -156,9 +173,9 @@ const Navbar = () => {
                 <button className="btn">
                   <Link to="/misreservas">Mis reservas</Link>
                 </button>
-                
+
                 <button className="btn" onClick={handleLogout}>
-                <Link to="/"></Link>
+                  <Link to="/"></Link>
                   Cerrar Sesión
                 </button>
 

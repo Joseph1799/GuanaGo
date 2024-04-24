@@ -104,16 +104,70 @@
     margin-top: 10px;
     font-size: 0.9rem;
   }
-
+ .secContent .singleDestination .cardInfo .precio .clasificacion {
+    color: var(--textColor);
+    max-width: 100px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .secContent .singleDestination .cardInfo .precio .clasificacion small {
+    text-align: center;
+    background: var(--gradientColor);
+    border-radius: 1rem;
+    color: var(--whiteColor);
+    padding: 1px 10px;
+    font-size: 10px;
+  }
   .booking-container {
     display: flex;
   flex-wrap: wrap; /* Asegúrate de que los elementos se envuelvan en pantallas más pequeñas */
   gap: 20px; /* Espacio entre las columnas */
 }
-  
+.rating {
+  /* Estilos para la clasificación */
+  margin-bottom: 8px; /* Espacio entre clasificación y enlace */
+}
+
+.rating .icon-star {
+  /* Estilos para el ícono de la estrella */
+  color: gold; /* Color dorado para el ícono de estrella */
+  margin-right: 5px; /* Espacio entre el ícono y la clasificación */
+}
+
+.comments-link {
+  /* Estilos para el enlace a los comentarios */
+}
+
+.comments-link a {
+  /* Estilos para el enlace */
+  color: #007bff; /* Color del enlace, por ejemplo */
+  text-decoration: none; /* Ningún subrayado en el enlace por defecto */
+}
+
+.comments-link a:hover {
+  text-decoration: underline; /* Subraya el enlace al pasar el mouse */
+} 
   .user-session-info {
     /* Estilos para la sección de la información del usuario */
     margin-bottom: 20px;
+  }
+  .hotel-amenities {
+    display: flex; /* O usa grid si prefieres */
+    flex-wrap: wrap; /* Para que las amenidades se envuelvan según el ancho del contenedor */
+    gap: 10px; /* Espacio entre las amenidades */
+    align-items: center; /* Alinea los íconos con el texto verticalmente */
+    font-size: 0.9em; /* Ajusta el tamaño de la fuente si es necesario */
+  }
+  
+  .hotel-amenities span {
+    display: flex;
+    align-items: center; /* Alinea los íconos con el texto */
+  }
+  
+  .icon {font-size: 1.5em; 
+    margin-right: 5px; /* Espacio entre el ícono y el texto */
   }
   
   .user-info-card {
@@ -122,6 +176,23 @@
     border-radius: 8px;
     /* Otros estilos que desees para la tarjeta */
   }
+
+  .form-row {
+    display: flex;
+    justify-content: space-between; /* Esto separará ambos campos equitativamente */
+  }
+  
+  .form-group.half-width {
+    flex: 1; /* Ambos elementos de form-group ocuparán la misma cantidad de espacio */
+    margin-right: 10px; /* Añade un margen a la derecha para separarlos */
+  }
+  
+  .form-group.half-width:last-child {
+    margin-right: 0; /* Remueve el margen a la derecha del último elemento */
+  }
+  
+  /* Asegúrate de incluir los estilos existentes para .form-group, input, etc. */
+  
   
   .booking-form {
     border: 1px solid #ccc;
