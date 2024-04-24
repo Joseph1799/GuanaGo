@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 :root {
     --PrimaryColor: hsl(199, 100%, 33%);
     --SecondaryColor: hsl(187, 85%, 43%);
@@ -10,6 +12,85 @@
     --inputColor: rgb(239, 239, 239);
     --bodyColor: ■rgb(240, 240, 246);
     --cardBG: rgb(225, 225, 235);
+}
+
+/* Navbar styles */
+
+.navBarSection {
+    position: relative;
+
+    /* Other styling */
+}
+
+/* Notification icon and counter */
+
+.iconButton {
+    position: relative;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.notification-counter {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 0.1em 0.6em;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.notifications-dropdown {
+    position: absolute;
+    right: 0.5;
+    top: 50px;
+
+    /* Adjust this value to position your dropdown correctly */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 300px;
+
+    /* Set the width of the dropdown */
+    z-index: 100;
+
+    &.show {
+        transform: translateY(0);
+    }
+}
+
+.notification-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    background: #f9f9f9;
+
+    /* Light grey background for each item */
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &:hover {
+        background-color: #e6e6e6;
+
+        /* Slightly darker grey on hover */
+    }
+}
+
+.iconButton svg {
+    width: 24px;
+
+    /* O el tamaño que prefieras */
+    height: 24px;
+
+    /* Asegúrate de que el alto y el ancho sean iguales para mantener la proporción */
+    color: #333;
+
+    /* O el color que coincida con tu esquema de diseño */
 }
 
 .header {
@@ -37,10 +118,24 @@
         }
     }
 
-    @media screen and (max-width: 768px) {
+    .toggleNavbar {
+        .icon {
+            font-size: 25px;
+            color: var(--PrimaryColor);
+        }
+
+        &:hover {
+            color: var(--SecondaryColor);
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header {
         .navBar {
             position: absolute;
             background: var(--whiteColorDeam);
+            height: -moz-max-content;
             height: max-content;
             width: 80%;
             border-radius: 1rem;
@@ -50,7 +145,7 @@
             transform: translate(-50%);
             z-index: 2000;
             box-shadow: 0 2px 4px rgba(2, 15, 29, 0.904);
-            transition: .4s ease-in-out;
+            transition: 0.4s ease-in-out;
         }
 
         .activeNavbar {
@@ -62,14 +157,14 @@
             justify-content: center;
             width: 100%;
             margin: auto;
-            padding: .5rem 0;
+            padding: 0.5rem 0;
 
             .navItem {
-                padding: .5rem 0;
+                padding: 0.5rem 0;
 
                 .navLink {
                     color: var(--textColor);
-                    font-size: .9rem;
+                    font-size: 0.9rem;
                     font-weight: 600;
 
                     &:hover {
@@ -96,21 +191,7 @@
             }
         }
     }
-
-    .toggleNavbar {
-        .icon {
-            font-size: 25px;
-            color: var(--PrimaryColor);
-        }
-
-        &:hover {
-            color: var(--SecondaryColor);
-        }
-    }
-
 }
-
-// MEDIA QUERY =================================
 
 @media screen and (min-width: 769px) {
 
@@ -122,33 +203,29 @@
     .header {
         padding: 1.5rem 2rem;
 
-        .navBar {
-            .navLists {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: row;
+        .navBar .navLists {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
 
-                .navItem {
-                    .navLink {
-                        color: var(--textColor);
-                        padding: 0 0.45rem;
-                        font-size: 0.9rem;
-                        font-weight: 500;
+            .navItem .navLink {
+                color: var(--textColor);
+                padding: 0 0.45rem;
+                font-size: 0.9rem;
+                font-weight: 500;
 
-                        &:hover {
-                            color: var(--PrimaryColor);
-                        }
-                    }
+                &:hover {
+                    color: var(--PrimaryColor);
                 }
+            }
 
-                .btn {
-                    margin-left: 1rem;
+            .btn {
+                margin-left: 1rem;
 
-                    a {
-                        font-weight: 500;
-                        color: var(--whiteColor);
-                    }
+                a {
+                    font-weight: 500;
+                    color: var(--whiteColor);
                 }
             }
         }
@@ -156,14 +233,8 @@
 }
 
 @media screen and (min-width: 960px) {
-    .header {
-        .navBar {
-            .navLists {
-                .navItem {
-                    padding: 0 1rem;
-                }
-            }
-        }
+    .header .navBar .navLists .navItem {
+        padding: 0 1rem;
     }
 }
 
@@ -172,3 +243,5 @@
         padding: 1rem 8.5rem;
     }
 }
+
+/*# sourceMappingURL=navbar.css.map */

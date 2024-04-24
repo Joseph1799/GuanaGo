@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./home.css";
 import video from "../../Assets/mainBeach.mp4";
 import { GrLocation } from "react-icons/gr";
@@ -9,23 +10,54 @@ import { FaTripadvisor } from "react-icons/fa";
 import { BsListTask } from "react-icons/bs";
 import { TbApps } from "react-icons/tb";
 import DatePicker from "react-datepicker";
+
+
 import "react-datepicker/dist/react-datepicker.css";
 
 import Aos from "aos";
 import "aos/dist/aos.css";
 
+
+
+
 const Home = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [price, setPrice] = useState(150000);
+  const [location, setLocation] = useState('');
+
+  const [destinations, setDestinations] = useState([]);
+  const navigate = useNavigate();
 
   const handlePriceChange = (e) => {
     setPrice(parseInt(e.target.value)); // Actualiza el valor del rango y del <h3>
   };
 
+
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
+
+  const handleSearch = async () => {
+    if (startDate && endDate) {
+      const formattedStartDate = startDate.toISOString().split('T')[0];
+      const formattedEndDate = endDate.toISOString().split('T')[0];
+
+      try {
+        const response = await fetch(`http://localhost:8080/guanago/destinos/buscar-destino?lugar=${location}&inicio=${formattedStartDate}&fin=${formattedEndDate}&precio=${price}00`);
+        console.log(`http://localhost:8080/guanago/destinos/buscar-destino?lugar=${location}&inicio=${formattedStartDate}&fin=${formattedEndDate}&precio=${price}00`)
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        console.log(data);
+        navigate('/destinos', { state: { data, location, startDate: formattedStartDate, endDate: formattedEndDate, price } });
+      } catch (error) {
+        console.error('There was an error!', error);
+      }
+    }
+
+  };
 
   return (
     <section className="home">
@@ -47,7 +79,12 @@ const Home = () => {
           <div className="destinationInput">
             <label htmlFor="city">Buscar destino:</label>
             <div className="input flex">
-              <input type="text" placeholder="Introduce el nombre aquí...." />
+              <input
+                type="text"
+                placeholder="Introduce el nombre aquí...."
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              />
               <GrLocation className="icon" />
             </div>
           </div>
@@ -98,7 +135,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="searchOptions flex">
+          <div className="searchOptions flex" onClick={handleSearch}>
             <FaSearch className="icon" />
             <span>Buscar</span>
           </div>

@@ -1,0 +1,13 @@
+{
+    "navbar.home": "Inicio",
+    "navbar.events": "Eventos",
+    "navbar.offers": "Ofertas",
+    "navbar.itineraries": "Itinerarios",
+    "navbar.welcome": "Bienvenido, %{username}",
+    "navbar.notifications": "Notificaciones",
+    "navbar.myBookings": "Mis Reservas",
+    "navbar.logout": "Cerrar Sesión",
+    "navbar.login": "Iniciar Sesión",
+    "navbar.signIn": "Iniciar Sesión"
+  }
+  

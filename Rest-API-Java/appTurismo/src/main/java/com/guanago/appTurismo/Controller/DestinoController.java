@@ -2,6 +2,7 @@ package com.guanago.appTurismo.Controller;
 
 import com.guanago.appTurismo.Entity.Destino;
 import com.guanago.appTurismo.Entity.DestinoResena;
+import com.guanago.appTurismo.Entity.Evento;
 import com.guanago.appTurismo.Service.DestinoResenaService;
 import com.guanago.appTurismo.Service.DestinoService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -69,4 +70,10 @@ public class DestinoController {
         return destinoService.ObtenerDestinoPorId(destinoId);
     }
 
+    @GetMapping("/listar-6destinos")
+    public ResponseEntity<List<Destino>> Obtener6Destinos()
+    {
+        List<Destino> listaDestinos = destinoService.Obtener6Destinos();
+        return ResponseEntity.ok(listaDestinos);
+    }
 }

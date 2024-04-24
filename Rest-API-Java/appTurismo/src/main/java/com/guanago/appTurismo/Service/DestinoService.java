@@ -2,6 +2,7 @@ package com.guanago.appTurismo.Service;
 
 import com.guanago.appTurismo.Entity.Destino;
 import com.guanago.appTurismo.Entity.DestinoResena;
+import com.guanago.appTurismo.Entity.Evento;
 import com.guanago.appTurismo.Repository.DestinoRepository;
 import com.guanago.appTurismo.Repository.DestinoResenaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +46,6 @@ public class DestinoService {
         return destinos;
     }
 
-
     public Destino ObtenerDestinoPorId(int id) {
         Optional<Destino> optionalDestino = destinoRepository.findById(Long.valueOf(id));
         if (optionalDestino.isPresent()) {
@@ -55,5 +55,9 @@ public class DestinoService {
         }
     }
 
+    public List<Destino> Obtener6Destinos() {
+        List<Destino> destinos = destinoRepository.findAll();
+        return destinos.subList(0, Math.min(destinos.size(), 6));
+    }
 
 }

@@ -21,8 +21,7 @@ const ItinerarioComp = () => {
   const [destinoId, setDestinoId] = useState("");
   const [modificar, setModificar] = useState(false);
   const [itinerarioId, setItinerarioId] = useState("");
-  const token =
-    "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb3NlcGgxNzk5QGdtYWlsLmNvbSIsImlhdCI6MTcxMzk2NzM5NywiZXhwIjoxNzEzOTg1Mzk3fQ.hUICBdg1YmBgRY2T8mkcX_i3KbmnxHQCaBOpvLgEZshPvRw2gpA-HVAheNASmJpAKWuQiwKysBVmqBjkPtttuA"; // Reemplaza con tu token
+  const token = localStorage.getItem("token");
 
   const cargarItinerarios = () => {
     obtenerItinerarios(token)
