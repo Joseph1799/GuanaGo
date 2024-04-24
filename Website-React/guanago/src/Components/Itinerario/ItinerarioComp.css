@@ -1,0 +1,310 @@
+@charset "UTF-8";
+:root {
+  --PrimaryColor: hsl(199, 100%, 33%);
+  --SecondaryColor: hsl(187, 85%, 43%);
+  --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(201, 33%, 16%);
+  --textColor: hsl(240, 4%, 36%);
+  --whiteColorDeam: hsl(0, 0%, 93%);
+  --greyText: rgb(190, 190, 190);
+  --inputColor: rgb(239, 239, 239);
+  --bodyColor: ■rgb(240, 240, 246);
+  --cardBG: rgb(225, 225, 235);
+  --cardHover: rgb(255, 255, 255);
+}
+
+.itinerario-container {
+  padding-top: 125px;
+  padding-bottom: 55px;
+}
+.itinerario-container .secContent {
+  background-color: var(--cardBG);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+  display: grid;
+  row-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+.itinerario-container .secContent .btn {
+  width: 6.5rem;
+}
+.itinerario-container .secContent .singleDestination {
+  max-width: 300px;
+  cursor: pointer;
+  height: 100%;
+  display: grid;
+  row-gap: 10px;
+  padding: 1rem;
+  border-radius: 10px;
+  align-items: center;
+  background: var(--whiteColorDeam);
+  box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
+  overflow: hidden;
+}
+.itinerario-container .secContent .singleDestination:hover {
+  background: var(--cardHover);
+  box-shadow: 1 4px 4px rgba(85, 85, 141, 0.549);
+  transition: 0.3s ease-in-out;
+}
+.itinerario-container .secContent .singleDestination .cardInfo {
+  padding: 0.5rem;
+}
+.itinerario-container .secContent .singleDestination .cardInfo .destTitle {
+  color: var(--blackColor);
+  font-size: 1.25rem;
+}
+.itinerario-container .secContent .singleDestination .cardInfo .continent {
+  gap: 0.5rem;
+}
+.itinerario-container .secContent .singleDestination .cardInfo .continent .icon {
+  color: var(--textColor);
+  font-size: 18px;
+}
+.itinerario-container .secContent .singleDestination .cardInfo .continent .name {
+  color: var(--textColor);
+  font-weight: 400;
+  font-size: 14px;
+}
+.itinerario-container .secContent .singleDestination .cardInfo .fees {
+  width: 100%;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-top: 1.5px solid var(--greyText);
+  border-bottom: 1.5px solid var(--greyText);
+}
+.itinerario-container .secContent .singleDestination .cardInfo .fees .fechas {
+  color: var(--whiteColor);
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  background-color: var(--SecondaryColor);
+  padding: 1px;
+  border-radius: 20px;
+  box-shadow: 0 3px 4px rgba(140, 140, 141, 0.6);
+  margin: 1px;
+}
+.itinerario-container .secContent .singleDestination .cardInfo .fees .price {
+  font-size: 2rem;
+  color: var(--blackColor);
+}
+.itinerario-container .secContent .singleDestination .cardInfo .desc {
+  font-size: 13.5px;
+  color: var(--textColor);
+  font-weight: 500;
+}
+.itinerario-container .secContent .singleDestination .cardInfo .dest {
+  margin-top: 3px;
+  font-size: 13.5px;
+  color: var(--textColor);
+  font-weight: 500;
+}
+.itinerario-container .secContent .singleDestination .cardInfo .btn {
+  margin-top: 1rem;
+  color: var(--whiteColor);
+  font-weight: 600;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.itinerario-container .secContent .singleDestination .cardInfo .btn .icon {
+  align-self: center;
+  font-size: 18px;
+}
+.itinerario-container .secContent .singleDestination .cardInfo .nuevas-fechas .date-input {
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  height: 28%;
+  padding: 1px;
+  border-radius: 20px;
+  box-shadow: 0 3px 4px rgba(140, 140, 141, 0.6);
+  margin: 1px;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+}
+.itinerario-container .secContent .singleDestination .cardInfo .nuevas-fechas .date-input:hover {
+  background-color: var(--cardBG);
+  transition: 0.3s;
+}
+.itinerario-container .secContent .singleDestination .cardInfo button {
+  justify-content: space-between;
+  margin: 5px;
+}
+.itinerario-container .secContent .singleDestination input {
+  height: 30px;
+}
+.itinerario-container .secContent .singleDestination select {
+  height: 39px;
+}
+.itinerario-container .secContent .singleDestination textarea {
+  height: 50px;
+}
+.itinerario-container .secContent .NewDestination {
+  max-width: 300px;
+  cursor: pointer;
+  height: 100%;
+  display: grid;
+  row-gap: 10px;
+  padding: 1rem;
+  border-radius: 10px;
+  align-items: center;
+  background: var(--whiteColorDeam);
+  box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
+  overflow: hidden;
+}
+.itinerario-container .secContent .NewDestination:hover {
+  background: var(--cardHover);
+  box-shadow: 1 4px 4px rgba(85, 85, 141, 0.549);
+  transition: 0.3s ease-in-out;
+}
+.itinerario-container .secContent .NewDestination .cardInfo {
+  padding: 0.5rem;
+}
+.itinerario-container .secContent .NewDestination .cardInfo .destTitle {
+  color: var(--blackColor);
+  font-size: 1.25rem;
+}
+.itinerario-container .secContent .NewDestination .cardInfo .continent {
+  gap: 0.5rem;
+}
+.itinerario-container .secContent .NewDestination .cardInfo .continent .icon {
+  color: var(--textColor);
+  font-size: 18px;
+}
+.itinerario-container .secContent .NewDestination .cardInfo .continent .name {
+  color: var(--textColor);
+  font-weight: 400;
+  font-size: 14px;
+}
+.itinerario-container .secContent .NewDestination .cardInfo .fees {
+  width: 100%;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-top: 1.5px solid var(--greyText);
+  border-bottom: 1.5px solid var(--greyText);
+}
+.itinerario-container .secContent .NewDestination .cardInfo .fees .fechas {
+  color: var(--whiteColor);
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  background-color: var(--SecondaryColor);
+  padding: 1px;
+  border-radius: 20px;
+  box-shadow: 0 3px 4px rgba(140, 140, 141, 0.6);
+  margin: 1px;
+}
+.itinerario-container .secContent .NewDestination .cardInfo .fees .price {
+  font-size: 2rem;
+  color: var(--blackColor);
+}
+.itinerario-container .secContent .NewDestination .cardInfo .desc {
+  font-size: 13.5px;
+  color: var(--textColor);
+  font-weight: 500;
+}
+.itinerario-container .secContent .NewDestination .cardInfo .dest {
+  margin-top: 3px;
+  font-size: 13.5px;
+  color: var(--textColor);
+  font-weight: 500;
+}
+.itinerario-container .secContent .NewDestination .cardInfo .btn {
+  margin-top: 1rem;
+  color: var(--whiteColor);
+  font-weight: 600;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.itinerario-container .secContent .NewDestination .cardInfo .btn .icon {
+  align-self: center;
+  font-size: 18px;
+}
+.itinerario-container .secContent .NewDestination .cardInfo .nuevas-fechas .date-input {
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  height: 28%;
+  padding: 1px;
+  border-radius: 20px;
+  box-shadow: 0 3px 4px rgba(140, 140, 141, 0.6);
+  margin: 1px;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+}
+.itinerario-container .secContent .NewDestination .cardInfo .nuevas-fechas .date-input:hover {
+  background-color: var(--cardBG);
+  transition: 0.3s;
+}
+.itinerario-container .secContent .NewDestination .cardInfo .nuevo-dest button {
+  justify-content: space-between;
+  margin: 5px;
+}
+.itinerario-container .secContent .NewDestination .cardInfo .nuevo-dest .btnSecondaryDanger {
+  margin-top: 8px;
+  padding: 0.3rem 0.4rem;
+  border-radius: 3rem;
+  border: 2px solid red;
+  cursor: pointer;
+  color: var(--blackColor);
+  font-weight: 600;
+  transition: 0.3s;
+}
+.itinerario-container .secContent .NewDestination .cardInfo .nuevo-dest .btnSecondaryDanger a {
+  color: var(--whiteColor);
+  font-weight: 500;
+}
+.itinerario-container .secContent .NewDestination .cardInfo .nuevo-dest .btnSecondaryDanger:hover {
+  border-color: rgb(107, 0, 0);
+  transform: scale(1.03);
+  box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3);
+}
+.itinerario-container .secContent .NewDestination input {
+  height: 30px;
+}
+.itinerario-container .secContent .NewDestination select {
+  height: 39px;
+}
+.itinerario-container .secContent .NewDestination textarea {
+  height: 50px;
+}
+
+.itinerario-form {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  background-color: rgb(244, 244, 244);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.itinerario-form .fechasTitle {
+  justify-content: space-between;
+  align-self: start;
+  width: 62%;
+}
+.itinerario-form .fechas {
+  justify-content: space-between;
+}
+.itinerario-form .fechas .date-input {
+  width: 48%;
+}
+
+.itinerario-form {
+  align-items: center;
+  text-align: center;
+}/*# sourceMappingURL=ItinerarioComp.css.map */

@@ -28,7 +28,8 @@ export const handleLogin = async (
     }
 
     const data = await response.json();
-    login(); // Llama a la función login del contexto de autenticación
+    localStorage.setItem('token', data.token);
+    login(data); // Llama a la función login del contexto de autenticación
     console.log("Login successful");
     console.log("Token:", data.token);
     navigate("/");

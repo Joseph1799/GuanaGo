@@ -1,0 +1,387 @@
+@charset "UTF-8";
+:root {
+  --PrimaryColor: hsl(199, 100%, 33%);
+  --SecondaryColor: hsl(187, 85%, 43%);
+  --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(201, 33%, 16%);
+  --textColor: hsl(240, 4%, 36%);
+  --whiteColorDeam: hsl(0, 0%, 93%);
+  --greyText: rgb(190, 190, 190);
+  --inputColor: rgb(239, 239, 239);
+  --bodyColor: ■rgb(240, 240, 246);
+  --cardBG: rgb(225, 225, 235);
+  --cardHover: rgb(255, 255, 255);
+}
+
+.main {
+  width: 100%;
+}
+.main .secTitle .title {
+  position: relative;
+  width: -moz-max-content;
+  width: max-content;
+  color: var(--textColor);
+  margin: 1rem 0;
+  z-index: 2;
+}
+.main .secTitle .title::after {
+  position: absolute;
+  content: "";
+  background: var(--SecondaryColor);
+  height: 5px;
+  width: 98px;
+  right: 0;
+  bottom: 5px;
+  z-index: -1;
+}
+.main .secContent {
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+/* booking.css */
+.booking-left-section {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px; /* Adjust the width as needed */
+  }
+  
+  .hotel-card, .reservation-card {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 4px;
+  }
+  
+  .hotel-header h2 {
+    font-size: 1.25rem;
+    color: #333;
+  }
+  
+  .hotel-rating {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+  }
+  
+  .rating {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .review-count {
+    font-size: 0.9rem;
+  }
+  
+  .hotel-location {
+    margin-top: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .hotel-features {
+    margin-top: 10px;
+  }
+  
+  .feature {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 0.8rem;
+    background-color: #eef;
+    padding: 3px 6px;
+    border-radius: 12px;
+  }
+  
+  .reservation-details .check-in-out {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .duration, .selection {
+    margin-top: 10px;
+    font-size: 0.9rem;
+  }
+
+  .booking-container {
+    display: flex;
+  flex-wrap: wrap; /* Asegúrate de que los elementos se envuelvan en pantallas más pequeñas */
+  gap: 20px; /* Espacio entre las columnas */
+}
+  
+  .user-session-info {
+    /* Estilos para la sección de la información del usuario */
+    margin-bottom: 20px;
+  }
+  
+  .user-info-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    /* Otros estilos que desees para la tarjeta */
+  }
+  
+  .booking-form {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    background: #fff;
+  }
+  
+  .form-header {
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .submit-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+  }
+  /* booking.css */
+.user-form-container {
+    margin-left: 20px; /* Adjust the spacing as needed */
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .user-details-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-group {
+    margin-bottom: 10px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 20px;
+  }
+ 
+  .user-session-info {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Separación entre esta tarjeta y el formulario */
+  }
+  .booking-form {
+    /* Estilos adicionales para la tarjeta del formulario si son necesarios */
+  }
+  
+  /* Estilos para el resto del formulario, botones, etc. */
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .submit-btn {
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0055aa;
+  }
+
+  .booking-page {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .left-column,
+  .right-column {
+    width: 48%; /* Ajusta el ancho según necesites */
+  }
+  
+  .card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  
+    .left-column,
+    .right-column {
+      flex: none; /* Ocuparán el ancho completo */
+    }
+  }
+  
+    
+  
+  /* Add more styles as needed to match the design */
+  
+.main .secContent .singleDestination {
+  cursor: pointer;
+  height: 100%;
+  display: grid;
+  row-gap: 10px;
+  padding: 1rem;
+  border-radius: 10px;
+  align-items: center;
+  background: var(--cardBG);
+  box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
+  overflow: hidden;
+}
+.main .secContent .singleDestination:hover {
+  background: var(--cardHover);
+  box-shadow: 1 4px 4px rgba(85, 85, 141, 0.549);
+  transition: 0.3s ease-in-out;
+}
+.main .secContent .singleDestination .imageDiv {
+  height: 180px;
+  width: 100%;
+  overflow: hidden;
+}
+.main .secContent .singleDestination .imageDiv img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: 2s ease;
+}
+.main .secContent .singleDestination .imageDiv:hover img {
+  transform: scale(1.1);
+}
+.main .secContent .singleDestination .cardInfo {
+  padding: 1rem;
+}
+.main .secContent .singleDestination .cardInfo .dest_title {
+  color: var(--blackColor);
+  font-size: 1.25rem;
+}
+.main .secContent .singleDestination .cardInfo .continent {
+  gap: 0.5rem;
+}
+.main .secContent .singleDestination .cardInfo .continent .icon {
+  color: var(--textColor);
+  font-size: 18px;
+}
+
+.main .secContent .singleDestination .cardInfo .continent .icon2 {
+  color: var(--textColor);
+  font-size: 40px;
+}
+.main .secContent .singleDestination .cardInfo .continent .name {
+  color: var(--textColor);
+  font-weight: 400;
+  font-size: 14px;
+}
+.main .secContent .singleDestination .cardInfo .precio {
+  width: 100%;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-top: 1.5px solid var(--greyText);
+  border-bottom: 1.5px solid var(--greyText);
+}
+
+
+.main .secContent .singleDestination .cardInfo .precio .clasificacion {
+  color: var(--textColor);
+  max-width: 100px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main .secContent .singleDestination .cardInfo .precio .clasificacion small {
+  text-align: center;
+  background: var(--gradientColor);
+  border-radius: 1rem;
+  color: var(--whiteColor);
+  padding: 1px 10px;
+  font-size: 10px;
+}
+.main .secContent .singleDestination .cardInfo .precio .price {
+  font-size: 2rem;
+  color: var(--blackColor);
+}
+.main .secContent .singleDestination .cardInfo .desc {
+  font-size: 13.5px;
+  color: var(--textColor);
+  font-weight: 500;
+}
+.main .secContent .singleDestination .cardInfo .btn {
+  margin-top: 1rem;
+  color: var(--whiteColor);
+  font-weight: 600;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.main .secContent .singleDestination .cardInfo .btn .icon2 {
+  align-self: center;
+  font-size: 40px;
+}
+
+@media screen and (min-width: 650px) {
+  .title {
+    font-size: 1.5rem;
+  }
+  .title::after {
+    width: 115px !important;
+  }
+  .secContent {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .secContent .singleDestination {
+    height: auto;
+  }
+}
+
+
+@media screen and (min-width: 950px) {
+  .secContent {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .secContent .singleDestination {
+    height: auto;
+  }
+
+  
+}/*# sourceMappingURL=main.css.map */

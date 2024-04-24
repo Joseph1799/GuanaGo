@@ -234,4 +234,44 @@
   .home .homeContent .cardDiv .searchOptions span {
     font-size: 17px;
   }
+  .destinationSuggestions {
+    list-style: none;
+  padding: 0;
+  margin-top: 0;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  }
+  
+  .destinationSuggestions li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+  }
+  
+  .destinationSuggestions li:last-child {
+    border-bottom: none;
+  }
+  
+  .destinationSuggestions li:hover {
+    background-color: #f7f7f7;
+  }
+
+  /* ... otros estilos ... */
+
+.destinationInput {
+  position: relative;
+  color: black;
+}
+
+.destinationSuggestions {
+  /* Estilos previos */
+  top: 100%; /* Posiciona la lista justo debajo del input */
+  left: 0;
+  right: 0;
+}
+
+  
 }/*# sourceMappingURL=home.css.map */
