@@ -647,3 +647,64 @@ http://localhost:8080/guanago
     "informacionPago": null
   }
   ```
+
+### 17. Listar Eventos
+
+- **URL:** `/listar-eventos`
+- **Método HTTP:** GET
+- **Descripción:** Obtiene una lista de todos los eventos disponibles en el sistema.
+- **Respuesta Exitosa:** Retorna un código de estado 200 junto con una lista de objetos JSON que representan los eventos.
+- **Posibles Errores:** Ninguno.
+- **Ejemplo de Solicitud:**
+
+  ```http
+  GET http://localhost:8080/guanago/evento/listar-eventos
+  ```
+
+- **Ejemplo de Respuesta Exitosa:**
+  ```json
+  [
+    {
+      "id": 1,
+      "nombre": "Evento 1",
+      "descripcion": "Descripción del evento 1",
+      "fecha": "2024-04-19",
+      "hora": "18:00",
+      "lugar": "Lugar del evento 1",
+      "imagen": "url_de_la_imagen_1",
+      "coords": "{ lat: 10.301268728338774, lng: -85.84049495764923 }"
+    },
+    {
+      "id": 2,
+      "nombre": "Evento 2",
+      "descripcion": "Descripción del evento 2",
+      "fecha": "2024-04-20",
+      "hora": "19:00",
+      "lugar": "Lugar del evento 2",
+      "imagen": "url_de_la_imagen_2",
+      "coords": "{ lat: 10.301268728338774, lng: -85.84049495764923 }"
+    }
+  ]
+  ```
+
+### 18. Eliminar Itinerario
+
+- **URL:** `/eliminar-itinerario`
+- **Método HTTP:** DELETE
+- **Descripción:** Elimina un itinerario específico de un usuario en el sistema.
+- **Parámetros de la Solicitud:**
+  - `itin_id` (Long, obligatorio): El ID del itinerario que se desea eliminar.
+- **Respuesta Exitosa:** Retorna un código de estado 200 junto con un mensaje indicando que el itinerario ha sido eliminado correctamente.
+- **Posibles Errores:** Ninguno.
+- **Ejemplo de Solicitud:**
+
+  ```http
+  DELETE http://localhost:8080/guanago/itinerarios/eliminar-itinerario?itin_id=2
+  ```
+
+- **Ejemplo de Respuesta Exitosa:**
+  ```json
+  {
+    "mensaje": "Itinerario eliminado correctamente"
+  }
+  ```

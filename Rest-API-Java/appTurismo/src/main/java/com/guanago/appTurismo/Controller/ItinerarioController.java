@@ -48,4 +48,11 @@ public class ItinerarioController {
     public Itinerario EditarItinerario(@RequestBody Itinerario itinerario) {
         return itinerarioService.EditarItinerario(itinerario);
     }
+
+    @DeleteMapping("/eliminar-itinerario")
+    public ResponseEntity<String> eliminarItinerario(@RequestParam("itin_id") long itinerarioId) {
+            itinerarioService.EliminarItinerarioUsuario(itinerarioId);
+            itinerarioService.EliminarItinerario(itinerarioId);
+            return ResponseEntity.ok("Itinerario eliminado correctamente");
+    }
 }

@@ -80,4 +80,18 @@ public class ItinerarioService {
 
         return itinerarioRepository.save(itinerarioExistente);
     }
+
+    public void EliminarItinerarioUsuario(long itinerarioId) {
+        List<ItinerarioUsuario> itinerarioUsuarioList = itinerarioUsuarioRepository.findAll();
+        for (ItinerarioUsuario itinerarioUsuario : itinerarioUsuarioList) {
+            if (itinerarioUsuario.getItinerario().getId() == itinerarioId) {
+                itinerarioUsuarioRepository.delete(itinerarioUsuario);
+                break;
+            }
+        }
+    }
+
+    public void EliminarItinerario(long itinerarioId) {
+        itinerarioRepository.deleteById(itinerarioId);
+    }
 }

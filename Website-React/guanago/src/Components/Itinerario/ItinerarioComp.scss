@@ -1,0 +1,372 @@
+:root {
+    --PrimaryColor: hsl(199, 100%, 33%);
+    --SecondaryColor: hsl(187, 85%, 43%);
+    --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(201, 33%, 16%);
+    --textColor: hsl(240, 4%, 36%);
+    --whiteColorDeam: hsl(0, 0%, 93%);
+    --greyText: rgb(190, 190, 190);
+    --inputColor: rgb(239, 239, 239);
+    --bodyColor: ■rgb(240, 240, 246);
+    --cardBG: rgb(225, 225, 235);
+    --cardHover: rgb(255, 255, 255);
+}
+
+.itinerario-container {
+    padding-top: 125px;
+    padding-bottom: 55px;
+
+    .secContent {
+        background-color: var(--cardBG);
+        border-radius: 10px;
+        padding: 2rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        margin-bottom: 2rem;
+        display: grid;
+        row-gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+
+        .btn {
+            width: 6.5rem;
+        }
+
+        .singleDestination {
+            max-width: 300px;
+            cursor: pointer;
+            height: 100%;
+            display: grid;
+            row-gap: 10px;
+            padding: 1rem;
+            border-radius: 10px;
+            align-items: center;
+            background: var(--whiteColorDeam);
+            box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
+            overflow: hidden;
+
+            &:hover {
+                background: var(--cardHover);
+                box-shadow: 1 4px 4px rgba(85, 85, 141, 0.549);
+                transition: .3s ease-in-out;
+            }
+
+            .cardInfo {
+                padding: 0.5rem;
+
+                .destTitle {
+                    color: var(--blackColor);
+                    font-size: 1.25rem;
+                }
+
+                .continent {
+                    gap: .5rem;
+
+                    .icon {
+                        color: var(--textColor);
+                        font-size: 18px;
+                    }
+
+                    .name {
+                        color: var(--textColor);
+                        font-weight: 400;
+                        font-size: 14px;
+                    }
+                }
+
+                .fees {
+                    width: 100%;
+                    justify-content: space-between;
+                    padding: 1rem;
+                    margin: 1rem 0;
+                    border-top: 1.5px solid var(--greyText);
+                    border-bottom: 1.5px solid var(--greyText);
+
+                    .fechas {
+                        color: var(--whiteColor);
+                        line-height: 20px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 80%;
+                        background-color: var(--SecondaryColor);
+                        padding: 1px;
+                        border-radius: 20px;
+                        box-shadow: 0 3px 4px rgba(140, 140, 141, 0.6);
+                        margin: 1px;
+                    }
+
+                    .price {
+                        font-size: 2rem;
+                        color: var(--blackColor);
+                    }
+                }
+
+                .desc {
+                    font-size: 13.5px;
+                    color: var(--textColor);
+                    font-weight: 500;
+                }
+
+                .dest {
+                    margin-top: 3px;
+                    font-size: 13.5px;
+                    color: var(--textColor);
+                    font-weight: 500;
+                }
+
+                .btn {
+                    margin-top: 1rem;
+                    color: var(--whiteColor);
+                    font-weight: 600;
+                    justify-content: space-between;
+                    gap: .5rem;
+
+                    .icon {
+                        align-self: center;
+                        font-size: 18px;
+                    }
+                }
+
+                .nuevas-fechas {
+                    .date-input {
+
+                        line-height: 20px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 95%;
+                        height: 28%;
+                        padding: 1px;
+                        border-radius: 20px;
+                        box-shadow: 0 3px 4px rgba(140, 140, 141, 0.6);
+                        margin: 1px;
+                        border: none;
+                        text-align: center;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: var(--cardBG);
+                            transition: .3s;
+                        }
+                    }
+                }
+
+                button {
+                    justify-content: space-between;
+                    margin: 5px;
+                }
+
+            }
+
+            input {
+                height: 30px;
+            }
+
+            select {
+                height: 39px;
+            }
+
+            textarea {
+                height: 50px;
+            }
+        }
+
+        .NewDestination {
+            max-width: 300px;
+            cursor: pointer;
+            height: 100%;
+            display: grid;
+            row-gap: 10px;
+            padding: 1rem;
+            border-radius: 10px;
+            align-items: center;
+            background: var(--whiteColorDeam);
+            box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
+            overflow: hidden;
+
+            &:hover {
+                background: var(--cardHover);
+                box-shadow: 1 4px 4px rgba(85, 85, 141, 0.549);
+                transition: .3s ease-in-out;
+            }
+
+            .cardInfo {
+                padding: 0.5rem;
+
+                .destTitle {
+                    color: var(--blackColor);
+                    font-size: 1.25rem;
+                }
+
+                .continent {
+                    gap: .5rem;
+
+                    .icon {
+                        color: var(--textColor);
+                        font-size: 18px;
+                    }
+
+                    .name {
+                        color: var(--textColor);
+                        font-weight: 400;
+                        font-size: 14px;
+                    }
+                }
+
+                .fees {
+                    width: 100%;
+                    justify-content: space-between;
+                    padding: 1rem;
+                    margin: 1rem 0;
+                    border-top: 1.5px solid var(--greyText);
+                    border-bottom: 1.5px solid var(--greyText);
+
+                    .fechas {
+                        color: var(--whiteColor);
+                        line-height: 20px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 80%;
+                        background-color: var(--SecondaryColor);
+                        padding: 1px;
+                        border-radius: 20px;
+                        box-shadow: 0 3px 4px rgba(140, 140, 141, 0.6);
+                        margin: 1px;
+                    }
+
+                    .price {
+                        font-size: 2rem;
+                        color: var(--blackColor);
+                    }
+                }
+
+                .desc {
+                    font-size: 13.5px;
+                    color: var(--textColor);
+                    font-weight: 500;
+                }
+
+                .dest {
+                    margin-top: 3px;
+                    font-size: 13.5px;
+                    color: var(--textColor);
+                    font-weight: 500;
+                }
+
+                .btn {
+                    margin-top: 1rem;
+                    color: var(--whiteColor);
+                    font-weight: 600;
+                    justify-content: space-between;
+                    gap: .5rem;
+
+                    .icon {
+                        align-self: center;
+                        font-size: 18px;
+                    }
+                }
+
+                .nuevas-fechas {
+                    .date-input {
+
+                        line-height: 20px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 95%;
+                        height: 28%;
+                        padding: 1px;
+                        border-radius: 20px;
+                        box-shadow: 0 3px 4px rgba(140, 140, 141, 0.6);
+                        margin: 1px;
+                        border: none;
+                        text-align: center;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: var(--cardBG);
+                            transition: .3s;
+                        }
+                    }
+                }
+
+                .nuevo-dest {
+                    button {
+                        justify-content: space-between;
+                        margin: 5px;
+                    }
+
+                    .btnSecondaryDanger {
+                        margin-top: 8px;
+                        padding: .3rem .4rem;
+                        border-radius: 3rem;
+                        border: 2px solid red;
+                        cursor: pointer;
+                        color: var(--blackColor);
+                        font-weight: 600;
+                        transition: .3s;
+                    }
+
+                    .btnSecondaryDanger a {
+                        color: var(--whiteColor);
+                        font-weight: 500;
+                    }
+
+                    .btnSecondaryDanger:hover {
+                        border-color: rgb(107, 0, 0);
+                        transform: scale(1.03);
+                        box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3);
+                    }
+
+                }
+            }
+
+            input {
+                height: 30px;
+            }
+
+            select {
+                height: 39px;
+            }
+
+            textarea {
+                height: 50px;
+            }
+        }
+    }
+}
+
+.itinerario-form {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: rgb(244, 244, 244);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    .fechasTitle {
+        justify-content: space-between;
+        align-self: start;
+        width: 62%;
+    }
+
+    .fechas {
+        justify-content: space-between;
+
+        .date-input {
+            width: 48%;
+        }
+
+
+    }
+}
+
+
+
+.itinerario-form {
+    align-items: center;
+    text-align: center;
+}
