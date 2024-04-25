@@ -1,57 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./main.css";
-import img from "../../Assets/img1.jpg";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { HiOutlineClipboardCheck } from "react-icons/hi";
-import { Outlet, Link } from "react-router-dom";
-
-const Data = [
-  {
-    id: 1,
-    imgSrc: img,
-    destTitle: "Tamarindo Diria Beach Resort",
-    location: "Tamarindo",
-    grade: "CULTURAL RELAX",
-    fees: "₡17000",
-    description:
-      "El Tamarindo Diria Beach Resort está ubicado en una zona con encanto junto a la playa de Tamarindo y tiene 3 piscinas al aire libre con vistas al océano Pacífico. Además, este gran complejo alberga 4 restaurantes, 4 bares, spa y casino.",
-  },
-
-  {
-    id: 2,
-    imgSrc: img,
-    destTitle: "Tamarindo Diria Beach Resort",
-    location: "Tamarindo",
-    grade: "CULTURAL RELAX",
-    fees: "₡17000",
-    description:
-      "El Tamarindo Diria Beach Resort está ubicado en una zona con encanto junto a la playa de Tamarindo y tiene 3 piscinas al aire libre con vistas al océano Pacífico. Además, este gran complejo alberga 4 restaurantes, 4 bares, spa y casino.",
-  },
-
-  {
-    id: 3,
-    imgSrc: img,
-    destTitle: "Tamarindo Diria Beach Resort",
-    location: "Tamarindo",
-    grade: "CULTURAL RELAX",
-    fees: "₡17000",
-    description:
-      "El Tamarindo Diria Beach Resort está ubicado en una zona con encanto junto a la playa de Tamarindo y tiene 3 piscinas al aire libre con vistas al océano Pacífico. Además, este gran complejo alberga 4 restaurantes, 4 bares, spa y casino.",
-  },
-
-  {
-    id: 4,
-    imgSrc: img,
-    destTitle: "Tamarindo Diria Beach Resort",
-    location: "Tamarindo",
-    grade: "CULTURAL RELAX",
-    fees: "₡17000",
-    description:
-      "El Tamarindo Diria Beach Resort está ubicado en una zona con encanto junto a la playa de Tamarindo y tiene 3 piscinas al aire libre con vistas al océano Pacífico. Además, este gran complejo alberga 4 restaurantes, 4 bares, spa y casino.",
-  },
-];
 
 const Main = () => {
+  const [destinos, setDestinos] = useState([]);
+
+  useEffect(() => {
+    fetchDestinos();
+  }, []);
+
+  const fetchDestinos = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:8080/guanago/destinos/listar-6destinos"
+      );
+      const data = await response.json();
+      console.log("Fetched data:", data); // Log the data to see what you are receiving.
+  
+      // Validate that 'data' is an array before setting the state.
+      if (Array.isArray(data)) {
+        setDestinos(data);
+      } else {
+        // Handle the case where data is not an array.
+        console.error("Received data is not an array:", data);
+        setDestinos([]); // Set to an empty array or handle appropriately.
+      }
+    } catch (error) {
+      console.error("Error fetching destinos:", error);
+    }
+  };
+
   return (
     <section className="main container section">
       <div className="secTitle">
@@ -59,40 +39,45 @@ const Main = () => {
       </div>
 
       <div className="secContent grid">
-        {Data.map(
-          ({ id, imgSrc, destTitle, location, grade, fees, description }) => {
+        {destinos.map(
+          ({
+            id,
+            imagen_dest,
+            dest_title,
+            lugar,
+            clasificacion,
+            impuestos,
+            precio,
+          }) => {
             return (
               <div key={id} className="singleDestination">
                 <div className="imageDiv">
-                  <img src={imgSrc} alt={destTitle} />
+                  <img src={imagen_dest} alt="" />
                 </div>
 
                 <div className="cardInfo">
-                  <h4 className="destTitle">{destTitle}</h4>
+                  <h4 className="destTitle">{dest_title}</h4>
                   <span className="continent flex">
                     <HiOutlineLocationMarker className="icon" />
-                    <span className="name">{location}</span>
+                    <span className="name">{lugar}</span>
                   </span>
 
                   <div className="fees flex">
                     <div className="grade">
                       <span>
-                        {grade}
-                        <small>+1</small>
+                        {clasificacion}
+                        <small>{clasificacion}</small>
                       </span>
                     </div>
                     <div className="price">
-                      <h5>{fees}</h5>
+                      <h5>₡{Number(precio).toLocaleString("es-CR")}</h5>
                     </div>
                   </div>
-
-                  <div className="desc">
-                    <p>{description}</p>
-                  </div>
-
-                  <button className="btn flex">
-                    DETALLES <HiOutlineClipboardCheck className="icon" />
-                  </button>
+                  <Link to={`/destino/${id}/${precio}`} className="navLink">
+                    <button className="btn">
+                      DETALLES <HiOutlineClipboardCheck className="icon" />
+                    </button>
+                  </Link>
                 </div>
               </div>
             );

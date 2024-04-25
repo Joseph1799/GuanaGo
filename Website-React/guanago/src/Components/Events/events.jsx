@@ -1,96 +1,86 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from "react";
 import "./events.css";
 import img from "../../Assets/img1.jpg";
-import { useLocation } from 'react-router-dom';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { useLocation } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
-const googleMapsApiKey = 'AIzaSyA2-q3jpNjbRR0dW9tGJICK5mYhMqEeZZo';
+const googleMapsApiKey = "AIzaSyA2-q3jpNjbRR0dW9tGJICK5mYhMqEeZZo";
 
-const Data = [
-  {
-    id: 1,
-    name: "Concierto de Rock en Vivo",
-    date: "10/04/2024",
-    location: "Tamarindo",
-    description: "Una noche de rock con las mejores bandas locales e internacionales.",
-    image: img,
-    coords: { lat: 10.29612960920648, lng: -85.83724546589183 } 
-  },
-  {
-    id: 2,
-    name: "Feria Gastronómica Internacional",
-    date: "10/04/2024",
-    location: "Parque de la Ciudad",
-    description: "Degusta platos de todo el mundo y disfruta de un día familiar lleno de sabor.",
-    image: img,
-    coords: { lat: 9.9333, lng: -84.0833 }
-  },
-  {
-    id: 3,
-    name: "Maratón de la Ciudad",
-    date: "20/04/2024",
-    location: "Centro de la Ciudad",
-    description: "Participa en el maratón más grande de la ciudad y corre por una buena causa.",
-    image: img,
-    coords: { lat: 9.9333, lng: -84.0833 }
-  },
-  {
-    id: 4,
-    name: "Exposición de Arte Moderno",
-    date: "13/05/2024",
-    location: "Galería de Arte Contemporáneo",
-    description: "Explora las últimas tendencias del arte moderno en esta exposición exclusiva.",
-    image: img,
-    coords: { lat: 9.9333, lng: -84.0833 }
-  },
-  {
-    id: 5,
-    name: "Festival de Cine Internacional",
-    date: "13/04/2024",
-    location: "Cineplex Central",
-    description: "Descubre las joyas del cine independiente y participa en Q&As con directores.",
-    image: img,
-    coords: { lat: 9.9333, lng: -84.0833 }
-  }
-];
 const containerStyle = {
-  width: '100%',
-  height: '200px'
+  width: "100%",
+  height: "200px",
+};
+
+// Función para convertir la cadena de coordenadas en un objeto JavaScript
+const parseCoordinates = (coordsString) => {
+  // Eliminar los espacios en blanco y los caracteres no deseados de la cadena
+  const cleanedString = coordsString.replace(/[{}]/g, "").trim();
+
+  // Dividir la cadena en un array de partes separadas por coma
+  const parts = cleanedString.split(",");
+
+  // Extraer los valores de latitud y longitud de las partes
+  const lat = parseFloat(parts[0].split(":")[1].trim());
+  const lng = parseFloat(parts[1].split(":")[1].trim());
+
+  // Retornar un objeto con las coordenadas
+  return { lat, lng };
 };
 
 const Events = () => {
-  
   const [selectedDate, setSelectedDate] = useState(null);
-  const [filteredEvents, setFilteredEvents] = useState(Data);
+  const [events, setEvents] = useState([]);
+  const [filteredEvents, setFilteredEvents] = useState([]);
 
-  // Esta función se llamará cada vez que el usuario seleccione una fecha.
+  useEffect(() => {
+    fetchEvents();
+  }, []);
+
+  const fetchEvents = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:8080/guanago/evento/listar-eventos"
+      );
+      const data = await response.json();
+
+      // Convertir las coordenadas de cadena a objetos JavaScript válidos
+      const formattedData = data.map((event) => ({
+        ...event,
+        coords: parseCoordinates(event.coords),
+      }));
+
+      setEvents(formattedData);
+      setFilteredEvents(formattedData);
+    } catch (error) {
+      console.error("Error fetching events:", error);
+    }
+  };
+
   const handleDateChange = (date) => {
     setSelectedDate(date);
-  
-    const dateFormat = { day: '2-digit', month: '2-digit', year: 'numeric' };
-    
-    const filtered = Data.filter(event => {
-      // Convierte la fecha seleccionada y las fechas de eventos a un formato comparable
-      const eventDateString = new Date(event.date.split('/').reverse().join('-'));
-      const selectedDateString = date.toLocaleDateString('en-CA', dateFormat); // 'en-CA' uses YYYY-MM-DD
-  
-      return eventDateString.toISOString().slice(0, 10) === selectedDateString;
+
+    const selectedDateString = date.toISOString().slice(0, 10);
+
+    const filtered = events.filter((event) => {
+      const eventDateString = event.fecha.slice(0, 10); // Extract date portion
+      return eventDateString === selectedDateString;
     });
-  
+
     setFilteredEvents(filtered);
   };
 
-    return (
-      
-      <LoadScript googleMapsApiKey={googleMapsApiKey}>
+  return (
+    <LoadScript googleMapsApiKey={googleMapsApiKey}>
       <section className="main container section">
         <div className="secTitle">
           <h3 className="title">Eventos próximos</h3>
         </div>
         <div className="dateInput">
-          <label className="label" htmlFor="date">Elegir fechas:</label>
+          <label className="label" htmlFor="date">
+            Elegir fechas:
+          </label>
           <div className="input flex">
             <DatePicker
               selected={selectedDate}
@@ -102,14 +92,18 @@ const Events = () => {
         </div>
         <div className="eventsDisplay">
           {filteredEvents.length > 0 ? (
-            filteredEvents.map(event => (
+            filteredEvents.map((event) => (
               <div key={event.id} className="eventCard">
-                <img src={event.image} alt={event.name} className="eventImage"/>
+                <img
+                  src={event.imagen}
+                  alt={event.nombre}
+                  className="eventImage"
+                />
                 <div className="eventDetails">
-                  <h4 className="eventName">{event.name}</h4>
-                  <p className="eventDate">{event.date}</p>
-                  <p className="eventLocation">{event.location}</p>
-                  <p className="eventDescription">{event.description}</p>
+                  <h4 className="eventName">{event.nombre}</h4>
+                  <p className="eventDate">{event.fecha}</p>
+                  <p className="eventLocation">{event.lugar}</p>
+                  <p className="eventDescription">{event.descripcion}</p>
                 </div>
                 {event.coords && (
                   <GoogleMap
@@ -129,7 +123,6 @@ const Events = () => {
       </section>
     </LoadScript>
   );
-  };
-  
+};
 
 export default Events;

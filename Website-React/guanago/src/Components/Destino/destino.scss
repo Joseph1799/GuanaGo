@@ -11,22 +11,6 @@
     --bodyColor: ■rgb(240, 240, 246);
     --cardBG: rgb(225, 225, 235);
 }
-.btnBack {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5em 1em;
-    text-decoration: none; /* Quita el subrayado del texto del enlace */
-    color: inherit; /* Usa el color del texto heredado o establece un color específico */
-    background-color: #f5f5f5; /* O el color de fondo que prefieras */
-    border-radius: 5px; /* O el valor que prefieras para bordes redondeados */
-    margin: 1em 0; /* Ajusta el margen según necesites */
-  }
-  
-  .backIcon {
-    margin-right: 0.5em; /* Espacio entre el icono y el texto */
-  }
-  
 
 .destino {
     width: 100%;
@@ -71,6 +55,177 @@
         margin: auto;
         row-gap: 2rem;
         z-index: 100;
+
+        .filtros {
+            margin-top: 30px;
+            width: 100%;
+
+            .homeContent {
+                width: 100%;
+                height: max-content;
+
+                display: flex;
+                row-gap: 3rem;
+                flex-direction: column;
+                align-items: stretch;
+                justify-content: center;
+                margin: auto;
+                color: var(--whiteColor);
+                z-index: 100;
+
+                .textDiv {
+                    padding: 2rem 0;
+
+                    .smallText {
+                        font-size: 13px;
+                        text-transform: uppercase;
+                    }
+
+                    .homeTitle {
+                        position: relative;
+                        font-size: 1.8rem;
+                    }
+                }
+
+                .cardDiv {
+                    position: relative;
+                    text-align: center;
+                    position: relative;
+
+                    padding: .5rem;
+                    background: var(--whiteColor);
+                    border-radius: 10px;
+                    gap: 1rem;
+                    align-self: center;
+                    width: 60%;
+
+                    label {
+                        display: block;
+                        color: var(--textColor);
+                        padding-bottom: 10px;
+                        font-size: 16px;
+                        font-weight: 600;
+                    }
+
+                    .label_total {
+                        justify-content: space-between;
+                        align-items: center;
+
+                        .total {
+                            color: var(--textColor);
+                            font-size: 18px;
+                            padding-bottom: 10px;
+                        }
+                    }
+
+                    .input {
+                        height: 40px;
+                        padding: 0 1rem;
+
+                        border-radius: 3rem;
+
+
+                        input {
+                            background: none;
+                            border: none;
+                            outline: none;
+                            width: 100%;
+                            font-size: 13px;
+                            font-weight: 500;
+
+                            &::placeholder {
+                                font-size: 13px;
+                            }
+                        }
+
+                        .dateInput {
+                            margin-bottom: 20px;
+                        }
+
+                        .label {
+                            display: block;
+                            font-weight: bold;
+                            margin-bottom: 5px;
+                        }
+
+                        .input {
+                            display: flex;
+                        }
+
+                        .datePicker {
+                            margin-right: 10px;
+                        }
+
+                        .datePicker input {
+                            caret-color: transparent;
+                            cursor: pointer;
+                            text-align: center;
+                            padding: 8px;
+                            border: 1px solid #dfdfdf;
+                            border-radius: 50px;
+                            font-size: 14px;
+                        }
+
+                        .icon {
+                            font-size: 18px;
+                            color: var(--PrimaryColor) !important;
+                            margin-left: 10px;
+                        }
+
+                        .input[type=range] {
+                            background: blue;
+                        }
+                    }
+
+                    .searchOptions {
+                        position: absolute;
+                        background: var(--gradientColor);
+                        width: max-content;
+                        bottom: -0.7rem;
+                        column-gap: .8rem;
+                        padding: 5px 1rem;
+                        border-radius: 3rem;
+                        left: 50%;
+                        transform: translate(-50%);
+                        justify-content: center;
+                        cursor: pointer;
+
+                        &:hover {
+                            background: var(--PrimaryColor);
+                        }
+
+                        .icon {
+                            font-size: 18px;
+                        }
+
+                        span {
+                            font-size: 13px;
+                        }
+                    }
+                }
+
+                .homeFooterIcons {
+                    width: 100%;
+                    justify-content: space-between;
+
+                    .icon {
+                        font-size: 20px;
+                        margin: 0 5px;
+                        color: var(--whiteColor);
+                        font-weight: 600;
+
+                        &:hover {
+                            color: var(--PrimaryColor);
+                        }
+                    }
+                }
+            }
+
+            h5 {
+                text-align: center;
+                background-color: antiquewhite;
+            }
+        }
 
         .contactDiv {
             justify-content: space-between;
@@ -126,7 +281,6 @@
         }
 
         .destinoCard {
-            margin-top: 60px;
             position: relative;
             padding: 1rem 1rem 4rem;
             gap: 2rem;
@@ -454,6 +608,62 @@
                     .destinoList {
                         font-size: 16px;
                         padding: 5px 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 660px) {
+    .home {
+        .secContent {
+            .filtros {
+                .homeContent {
+                    .cardDiv {
+
+                        grid-template-columns: repeat(3, 1fr);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 940px) {
+    .destino {
+        height: 80vh;
+    }
+}
+
+@media screen and (min-width: 1240px) {
+    .destino {
+        height: 85vh;
+
+        .secContent {
+            .filtros {
+                width: 125%;
+
+                .homeContent {
+                    padding-left: 0;
+                    padding-right: 0;
+
+                    .cardDiv {
+
+                        grid-template-columns: repeat(3, 1fr);
+
+                        .input {
+                            margin-bottom: 1rem;
+                        }
+
+                        .searchOptions {
+                            bottom: -1rem;
+                            padding: 8px 1rem;
+
+                            span {
+                                font-size: 17px;
+                            }
+                        }
                     }
                 }
             }

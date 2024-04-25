@@ -1,22 +1,52 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import "./destino.css";
-import { useParams } from 'react-router-dom';
 import video from "../../Assets/secondBeach.mp4";
-import { RiMessage3Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { RiMessage3Fill } from "react-icons/ri";
+import { FaSearch } from "react-icons/fa";
 // Importar las funciones de resenas.js
 import { EnviarResena } from "./resenas.js";
 import { obtenerResenasDestino } from "./resenas.js";
 import { obtenerDatosDestino } from "./obtenerDestino.js";
-import { IoIosArrowBack } from 'react-icons/io';
+import DatePicker from "react-datepicker";
 
 const DestinoComponent = () => {
-  const { id } = useParams();
   const [destinoData, setDestinoData] = useState(null);
   const [mostrarTextarea, setMostrarTextarea] = useState(false);
   const [textoBoton, setTextoBoton] = useState("Agregar Reseña");
   const [nuevaResena, setNuevaResena] = useState("");
   const [resenasDestino, setResenasDestino] = useState([]);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [precio, setPrecio] = useState(0);
+
+  const handleSearch = async () => {
+    if (startDate && endDate) {
+      const formattedStartDate = startDate.toISOString().split("T")[0];
+      const formattedEndDate = endDate.toISOString().split("T")[0];
+
+      // Calcular la diferencia de días entre startDate y endDate
+      const diffTime = Math.abs(
+        new Date(formattedEndDate) - new Date(formattedStartDate)
+      );
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+      // Multiplicar el precio por los días seleccionados
+      const nuevoPrecio = precioInicialNumber * diffDays; // Usar precioInicialNumber en lugar de precio
+
+      // Actualizar el estado del precio con el nuevo valor calculado
+      setPrecio(nuevoPrecio); // Actualizar el estado del precio
+    }
+  };
+
+  let { id } = useParams();
+  let { precioInicial } = useParams();
+  const precioInicialNumber = parseFloat(precioInicial);
+
+  useEffect(() => {
+    setPrecio(precioInicialNumber);
+  }, []);
 
   useEffect(() => {
     obtenerResenas(); // Llamar a la función para obtener las reseñas cuando el componente se monta
@@ -35,7 +65,7 @@ const DestinoComponent = () => {
     };
 
     fetchData();
-  }, [id]);
+  }, []);
 
   const toggleTextarea = () => {
     if (textoBoton === "Agregar Reseña") {
@@ -63,20 +93,56 @@ const DestinoComponent = () => {
       </div>
 
       <div className="secContent container">
+        <div className="filtros">
+          <div className="homeContent container">
+            <div className="cardDiv">
+              <div className="dateInput">
+                <label className="label" htmlFor="date">
+                  Elegir fechas:
+                </label>
+                <div className="input flex">
+                  <div className="datePicker">
+                    <DatePicker
+                      selected={startDate}
+                      onChange={(date) => setStartDate(date)}
+                      selectsStart
+                      startDate={startDate}
+                      endDate={endDate}
+                      placeholderText="Fecha de inicio"
+                    />
+                  </div>
+                  <div className="datePicker">
+                    <DatePicker
+                      selected={endDate}
+                      onChange={(date) => setEndDate(date)}
+                      selectsEnd
+                      startDate={startDate}
+                      endDate={endDate}
+                      minDate={startDate}
+                      placeholderText="Fecha final"
+                    />
+                  </div>
+                </div>
+              </div>
 
+              <div className="searchOptions flex" onClick={handleSearch}>
+                <FaSearch className="icon" />
+                <span>Buscar</span>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="destinoCard flex">
           <div className="destinoIntro flex">
             <div className="destinoHeader flex">
               <div className="destinoReservar flex">
                 <div className="destinoTitle flex">
-                 
                   <h3>{destinoData?.dest_title}</h3>
                 </div>
-                <div className="backButton">
-
-                </div>
                 <div className="reservar">
-                  <button className="btn"><Link to={`/reservar/${id}`}>Reservar</Link></button>
+                  <button className="btn">
+                    <Link to={`/reservar/${id}`}>Reservar</Link>
+                  </button>
                 </div>
               </div>
             </div>
@@ -90,25 +156,20 @@ const DestinoComponent = () => {
                   </span>
                 </div>
                 <div className="precio">
-                  <h5>₡{destinoData?.precio}</h5>
+                  <h5>₡{Number(precio).toLocaleString("es-CR")}</h5>
                 </div>
               </div>
             </div>
             <div className="destinoImage">
               <img className="Image" src={destinoData?.imagen_dest} alt="" />
             </div>
-            
-            <div className="destinoParagraph">{destinoData?.descripcion} </div><Link to="/" className="btnBack">
-                    <IoIosArrowBack className="backIcon" /> Regresar a inicio
-                  </Link>
+
+            <div className="destinoParagraph">{destinoData?.descripcion}</div>
           </div>
 
           {/* PRIMER GRUPO */}
-          
           <div className="destinoLinks ">
-          
             <div className="linkGroup">
-              
               <span className="groupTitle">Reseñas</span>
               <div className="resenasDiv">
                 <RiMessage3Fill className="icon" />

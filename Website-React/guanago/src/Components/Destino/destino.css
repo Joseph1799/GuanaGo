@@ -55,6 +55,152 @@
   row-gap: 2rem;
   z-index: 100;
 }
+.destino .secContent .filtros {
+  margin-top: 30px;
+  width: 100%;
+}
+.destino .secContent .filtros .homeContent {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  row-gap: 3rem;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  margin: auto;
+  color: var(--whiteColor);
+  z-index: 100;
+}
+.destino .secContent .filtros .homeContent .textDiv {
+  padding: 2rem 0;
+}
+.destino .secContent .filtros .homeContent .textDiv .smallText {
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.destino .secContent .filtros .homeContent .textDiv .homeTitle {
+  position: relative;
+  font-size: 1.8rem;
+}
+.destino .secContent .filtros .homeContent .cardDiv {
+  position: relative;
+  text-align: center;
+  position: relative;
+  padding: 0.5rem;
+  background: var(--whiteColor);
+  border-radius: 10px;
+  gap: 1rem;
+  align-self: center;
+  width: 60%;
+}
+.destino .secContent .filtros .homeContent .cardDiv label {
+  display: block;
+  color: var(--textColor);
+  padding-bottom: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.destino .secContent .filtros .homeContent .cardDiv .label_total {
+  justify-content: space-between;
+  align-items: center;
+}
+.destino .secContent .filtros .homeContent .cardDiv .label_total .total {
+  color: var(--textColor);
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+.destino .secContent .filtros .homeContent .cardDiv .input {
+  height: 40px;
+  padding: 0 1rem;
+  border-radius: 3rem;
+}
+.destino .secContent .filtros .homeContent .cardDiv .input input {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 500;
+}
+.destino .secContent .filtros .homeContent .cardDiv .input input::-moz-placeholder {
+  font-size: 13px;
+}
+.destino .secContent .filtros .homeContent .cardDiv .input input::placeholder {
+  font-size: 13px;
+}
+.destino .secContent .filtros .homeContent .cardDiv .input .dateInput {
+  margin-bottom: 20px;
+}
+.destino .secContent .filtros .homeContent .cardDiv .input .label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.destino .secContent .filtros .homeContent .cardDiv .input .input {
+  display: flex;
+}
+.destino .secContent .filtros .homeContent .cardDiv .input .datePicker {
+  margin-right: 10px;
+}
+.destino .secContent .filtros .homeContent .cardDiv .input .datePicker input {
+  caret-color: transparent;
+  cursor: pointer;
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #dfdfdf;
+  border-radius: 50px;
+  font-size: 14px;
+}
+.destino .secContent .filtros .homeContent .cardDiv .input .icon {
+  font-size: 18px;
+  color: var(--PrimaryColor) !important;
+  margin-left: 10px;
+}
+.destino .secContent .filtros .homeContent .cardDiv .input .input[type=range] {
+  background: blue;
+}
+.destino .secContent .filtros .homeContent .cardDiv .searchOptions {
+  position: absolute;
+  background: var(--gradientColor);
+  width: -moz-max-content;
+  width: max-content;
+  bottom: -0.7rem;
+  -moz-column-gap: 0.8rem;
+       column-gap: 0.8rem;
+  padding: 5px 1rem;
+  border-radius: 3rem;
+  left: 50%;
+  transform: translate(-50%);
+  justify-content: center;
+  cursor: pointer;
+}
+.destino .secContent .filtros .homeContent .cardDiv .searchOptions:hover {
+  background: var(--PrimaryColor);
+}
+.destino .secContent .filtros .homeContent .cardDiv .searchOptions .icon {
+  font-size: 18px;
+}
+.destino .secContent .filtros .homeContent .cardDiv .searchOptions span {
+  font-size: 13px;
+}
+.destino .secContent .filtros .homeContent .homeFooterIcons {
+  width: 100%;
+  justify-content: space-between;
+}
+.destino .secContent .filtros .homeContent .homeFooterIcons .icon {
+  font-size: 20px;
+  margin: 0 5px;
+  color: var(--whiteColor);
+  font-weight: 600;
+}
+.destino .secContent .filtros .homeContent .homeFooterIcons .icon:hover {
+  color: var(--PrimaryColor);
+}
+.destino .secContent .filtros h5 {
+  text-align: center;
+  background-color: antiquewhite;
+}
 .destino .secContent .contactDiv {
   justify-content: space-between;
   flex-direction: column;
@@ -102,7 +248,6 @@
   font-size: 18px;
 }
 .destino .secContent .destinoCard {
-  margin-top: 60px;
   position: relative;
   padding: 1rem 1rem 4rem;
   gap: 2rem;
@@ -359,5 +504,40 @@
   .destino .secContent .destinoLinks .linkGroup .destinoList {
     font-size: 16px;
     padding: 5px 0;
+  }
+}
+@media screen and (min-width: 660px) {
+  .home .secContent .filtros .homeContent .cardDiv {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (min-width: 940px) {
+  .destino {
+    height: 80vh;
+  }
+}
+@media screen and (min-width: 1240px) {
+  .destino {
+    height: 85vh;
+  }
+  .destino .secContent .filtros {
+    width: 125%;
+  }
+  .destino .secContent .filtros .homeContent {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .destino .secContent .filtros .homeContent .cardDiv {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .destino .secContent .filtros .homeContent .cardDiv .input {
+    margin-bottom: 1rem;
+  }
+  .destino .secContent .filtros .homeContent .cardDiv .searchOptions {
+    bottom: -1rem;
+    padding: 8px 1rem;
+  }
+  .destino .secContent .filtros .homeContent .cardDiv .searchOptions span {
+    font-size: 17px;
   }
 }/*# sourceMappingURL=destino.css.map */
